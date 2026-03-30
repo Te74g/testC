@@ -127,6 +127,14 @@ This is a formal operating mechanism, not an ad hoc exception.
 - usage limits must be treated as sleep; the system must not keep sending repeated requests after a cap is reached
 - Codex approval modes should be introduced in tiers, with `--full-auto` as the normal baseline rather than jumping directly to unrestricted operation
 - Git snapshots are an explicit safety requirement, especially as background automation increases
+- the first local worker target should be 5 high-contrast workers: Builder, Verifier, Researcher, Editor, and Watcher
+- worker creation should begin with prompt-and-process prototypes first, not immediate model tuning or large-scale LoRA work
+- the relay runtime should trust an external trust policy and signed queued commands rather than repo-local authority alone
+- guarded runtime control should live outside the repository and verify critical runtime file hashes before start or enqueue actions
+- blocked identities should be enforced by an external denylist with console notice and audit logging, not by covert file spraying into personal folders
+- the first worker creation runtime loop should be `nc.worker.seed -> runtime/inbox/worker -> materialize-worker-prototypes -> workers/prototypes`
+- this repository should carry a project-scoped Codex config that defaults to `on-request + workspace-write + network_access=false`, while stronger profiles stay user-scoped
+- after guarded setup, the operating goal should be a low-approval steady state where most cycles stay repo-local and external trust updates happen only in batches
 
 ## 11. Success Reference
 
@@ -152,6 +160,16 @@ This is a formal operating mechanism, not an ad hoc exception.
 - 2026-03-31: Added a Codex approval-modes policy so automation strength can increase in tiers instead of through immediate unrestricted usage.
 - 2026-03-31: Added a Git backup policy so autonomous or background changes are paired with regular recoverable snapshots.
 - 2026-03-31: Initialized Git history, renamed the branch to `main`, connected `origin` to the sponsor-provided GitHub repository, and pushed the first snapshot successfully.
+- 2026-03-31: Defined the first local worker-factory plan, including headcount, roles, personality settings, and the prompt-first creation method.
+- 2026-03-31: Added security hardening for the relay runtime using an external trust policy and HMAC-signed queued commands.
+- 2026-03-31: Verified that an allowed signed command is processed and an untrusted sender is rejected by policy.
+- 2026-03-31: Extended relay hardening with an external guarded control layer and external integrity manifest so repo changes alone cannot silently redefine trusted runtime control.
+- 2026-03-31: Installed the external guarded control into `%USERPROFILE%\\.northbridge` and verified it can read status and enqueue a signed command end-to-end.
+- 2026-03-31: Added a safer blocked-identity design that denies guarded runtime control for listed Git identities such as `Ren9618` and logs the event outside the repo.
+- 2026-03-31: Initialized the external identity policy in `%USERPROFILE%\\.northbridge`, confirmed `Ren9618` is in the blocked Git username list, and verified normal guarded control still works for the current trusted identity.
+- 2026-03-31: Added `nc.worker.seed`, created the worker catalog and materializer, and generated the first five prompt-only worker prototypes through the relay bot path.
+- 2026-03-31: Introduced a project-scoped `.codex/config.toml` so this repository defaults to a `--full-auto`-style local workflow without making networked unattended mode the repo default.
+- 2026-03-31: Added a low-approval operation plan so daily work shifts from repeated runtime surgery toward repo-local worker cycles.
 
 ## 12. Failure and Rejection Reference
 
@@ -160,6 +178,7 @@ This is a formal operating mechanism, not an ad hoc exception.
 - 2026-03-31: Advancing too far into policy and organization writing before explicitly defining the process layer was a process gap.
 - 2026-03-31: Treating process feedback as a tone issue instead of an execution-order issue was a mistaken read and has been corrected.
 - 2026-03-31: PowerShell 5.1 caused two runtime wrinkles during bot launch: `Start-Process` environment collisions and UTF-8 BOM on queued JSON. Both were corrected.
+- 2026-03-31: PowerShell 5.1 caused additional trust-runtime wrinkles around `ConvertFrom-Json -AsHashtable`, sandbox-vs-user home paths, and HMAC construction. These were corrected.
 
 ## 13. Intent File Update Rule
 
@@ -188,3 +207,10 @@ This rule is mandatory, not advisory.
 - When a session becomes messy, the right move is detox plus handoff, not stubborn continuation.
 - On Windows PowerShell 5.1, prefer compatibility-safe process launch and tolerate BOM when reading queued JSON from script-generated files.
 - Stronger automation should be paired with stronger backup discipline and explicit approval-mode choice.
+- Start worker creation with a small, high-contrast roster before attempting broader personalization or model tuning.
+- For abuse resistance, keep the trust root outside the repository and require signed commands wherever practical.
+- For stronger abuse resistance, do not let the repository be the launch authority for the runtime; use an external guarded control script and refresh its manifest after trusted runtime changes.
+- If a specific malicious identity is known, block it through external denylist checks and audit it; do not answer with covert file propagation.
+- For worker bootstrap, start with queue-delivered prompt prototypes before adding evaluation automation or model tuning.
+- Keep safer daily Codex defaults in project config, but keep stronger named profiles in user config so risky modes remain an explicit operator choice.
+- After setup, prefer changing the runtime rarely and doing normal work through repo-local cycles.

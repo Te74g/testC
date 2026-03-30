@@ -189,3 +189,13 @@ followed by:
 
 - a local queue format
 - a minimal relay bot
+
+## 13. Low-Approval Direction
+
+Once the guarded runtime is installed, routine work should shift toward repo-local execution.
+
+That means:
+
+- out-of-repo trust updates stay occasional
+- daily worker cycles stay inside the repository
+- the guarded layer is changed in batches, not continuously

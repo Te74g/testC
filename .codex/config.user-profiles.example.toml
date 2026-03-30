@@ -1,0 +1,20 @@
+# Merge the parts you want into ~/.codex/config.toml.
+# These are optional user-level profiles, not project defaults.
+
+[profiles.networked_unattended]
+approval_policy = "never"
+sandbox_mode = "workspace-write"
+
+[profiles.networked_unattended.sandbox_workspace_write]
+network_access = true
+
+[profiles.readonly_review]
+approval_policy = "on-request"
+sandbox_mode = "read-only"
+
+[profiles.local_auto]
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[profiles.local_auto.sandbox_workspace_write]
+network_access = false

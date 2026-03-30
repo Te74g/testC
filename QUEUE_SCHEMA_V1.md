@@ -15,6 +15,7 @@ The relay runtime uses these directories under `runtime/`:
 - `inbox/memory`
 - `inbox/call`
 - `inbox/resume`
+- `inbox/worker`
 - `logs`
 - `state`
 
@@ -38,6 +39,7 @@ Suggested filename:
   "priority": "normal",
   "created_at": "2026-03-31T02:10:00+09:00",
   "approval_status": "not_required",
+  "signature": "hex-hmac-signature",
   "payload": {
     "memory_target": "active",
     "operation": "refresh"
@@ -99,3 +101,5 @@ This should include:
 ## 10. V1 Safety Rule
 
 If the runtime sees an unexpected file shape or invalid JSON, it must fail the item rather than guessing.
+
+If the trust policy requires signed commands, the runtime must also fail unsigned or badly signed items.

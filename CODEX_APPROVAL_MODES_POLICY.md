@@ -116,6 +116,10 @@ Use configuration files such as:
 
 Configuration changes affect future runs more reliably than trying to reinterpret already-applied launch flags.
 
+For this repository, a project-scoped `.codex/config.toml` should carry the safe everyday default.
+
+Named profiles for stronger modes should live in `~/.codex/config.toml`.
+
 ## 7. Suggested Persistent Default
 
 For safer daily use, prefer a conservative profile first.
@@ -141,6 +145,18 @@ network_access = true
 ```
 
 The second profile should be applied only after the team is confident in the workflow.
+
+For this project, the repo-local default should match the safer daily baseline:
+
+```toml
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+[sandbox_workspace_write]
+network_access = false
+```
+
+Optional stronger user profiles should be kept outside the repo so they remain an explicit operator choice.
 
 ## 8. Operating Rules
 

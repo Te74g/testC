@@ -1,6 +1,8 @@
 "use strict";
 
+const crypto = require("crypto");
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 
 const runtimeRoot = __dirname;
@@ -11,6 +13,8 @@ const inboxRoot = path.join(runtimeRoot, "inbox");
 const registryPath = path.join(runtimeRoot, "command-registry.v1.json");
 const statusPath = path.join(stateRoot, "relay-bot.status.json");
 const logPath = path.join(logsRoot, "relay-bot.jsonl");
+const defaultTrustPolicyPath = path.join(os.homedir(), ".northbridge", "trust-policy.v1.json");
+const trustPolicyPath = process.env.NORTHBRIDGE_TRUST_POLICY_PATH || defaultTrustPolicyPath;
 
 const directories = [
   path.join(queueRoot, "pending"),
@@ -20,11 +24,13 @@ const directories = [
   path.join(inboxRoot, "memory"),
   path.join(inboxRoot, "call"),
   path.join(inboxRoot, "resume"),
+  path.join(inboxRoot, "worker"),
   logsRoot,
   stateRoot,
 ];
 
 let registry = null;
+let trustPolicy = null;
 let startedAt = new Date().toISOString();
 let processedCount = 0;
 let failedCount = 0;
@@ -40,6 +46,77 @@ function ensureDirectories() {
 
 function loadRegistry() {
   registry = JSON.parse(fs.readFileSync(registryPath, "utf8"));
+}
+
+function loadTrustPolicy() {
+  if (!fs.existsSync(trustPolicyPath)) {
+    trustPolicy = {
+      version: "fallback",
+      require_signature: false,
+      allowed_senders: ["Northbridge Systems"],
+      blocked_senders: [],
+      allowed_receivers: ["Northbridge Systems", "Claude-side company", "codex", "claude"],
+      command_rules: {},
+      hmac_secret: "",
+    };
+    return;
+  }
+
+  trustPolicy = JSON.parse(fs.readFileSync(trustPolicyPath, "utf8").replace(/^\uFEFF/, ""));
+}
+
+function computeSignature(envelope) {
+  const basis = {
+    id: envelope.id,
+    command: envelope.command,
+    sender: envelope.sender,
+    receiver: envelope.receiver,
+    reason: envelope.reason,
+    priority: envelope.priority,
+    created_at: envelope.created_at,
+    approval_status: envelope.approval_status,
+    payload: envelope.payload,
+  };
+
+  return crypto
+    .createHmac("sha256", trustPolicy.hmac_secret)
+    .update(JSON.stringify(basis))
+    .digest("hex");
+}
+
+function validateTrust(envelope) {
+  const blockedSenders = trustPolicy.blocked_senders || [];
+  if (blockedSenders.includes(envelope.sender)) {
+    throw new Error(`Blocked sender: ${envelope.sender}`);
+  }
+
+  const allowedSenders = trustPolicy.allowed_senders || [];
+  if (allowedSenders.length > 0 && !allowedSenders.includes(envelope.sender)) {
+    throw new Error(`Sender not allowed: ${envelope.sender}`);
+  }
+
+  const allowedReceivers = trustPolicy.allowed_receivers || [];
+  if (allowedReceivers.length > 0 && !allowedReceivers.includes(envelope.receiver)) {
+    throw new Error(`Receiver not allowed by trust policy: ${envelope.receiver}`);
+  }
+
+  const commandRule = (trustPolicy.command_rules || {})[envelope.command];
+  if (commandRule && commandRule.allowed_senders && !commandRule.allowed_senders.includes(envelope.sender)) {
+    throw new Error(`Sender not allowed for command by trust policy: ${envelope.sender}`);
+  }
+
+  if (trustPolicy.require_signature) {
+    if (!envelope.signature || typeof envelope.signature !== "string") {
+      throw new Error("Missing required signature");
+    }
+    if (!trustPolicy.hmac_secret) {
+      throw new Error("Trust policy requires signatures but no hmac_secret is configured");
+    }
+    const expectedSignature = computeSignature(envelope);
+    if (envelope.signature !== expectedSignature) {
+      throw new Error("Invalid command signature");
+    }
+  }
 }
 
 function writeJson(filePath, value) {
@@ -93,6 +170,7 @@ function validateEnvelope(envelope) {
     "priority",
     "created_at",
     "approval_status",
+    "signature",
     "payload",
   ];
 
@@ -110,6 +188,8 @@ function validateEnvelope(envelope) {
   if (!commandSpec) {
     throw new Error(`Unknown command: ${envelope.command}`);
   }
+
+  validateTrust(envelope);
 
   if (commandSpec.allowedReceiver && !commandSpec.allowedReceiver.includes(envelope.receiver)) {
     throw new Error(`Receiver not allowed for command: ${envelope.receiver}`);
@@ -233,8 +313,14 @@ function processPendingQueue() {
 function start() {
   ensureDirectories();
   loadRegistry();
+  loadTrustPolicy();
   writeStatus({ state: "starting" });
-  logEvent("info", "relay_bot_started", { registry_version: registry.version });
+  logEvent("info", "relay_bot_started", {
+    registry_version: registry.version,
+    trust_policy_path: trustPolicyPath,
+    trust_policy_version: trustPolicy.version,
+    require_signature: !!trustPolicy.require_signature,
+  });
 
   heartbeatHandle = setInterval(() => {
     writeStatus({ state: "running" });

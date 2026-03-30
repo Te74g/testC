@@ -13,6 +13,7 @@ The approved V1 commands are:
 - `nc.memory`
 - `nc.call`
 - `nc.resume`
+- `nc.worker.seed`
 
 No other command should be accepted by the V1 relay bot.
 
@@ -28,6 +29,7 @@ Every queued command must include:
 - `priority`
 - `created_at`
 - `approval_status`
+- `signature`
 - `payload`
 
 ## 4. `nc.memory`
@@ -93,7 +95,30 @@ The relay bot must reject a command if:
 - the approval boundary is violated
 - the JSON cannot be parsed
 
-## 8. V1 Scope Limit
+## 8. `nc.worker.seed`
+
+Purpose:
+
+- request creation of a prompt-only worker prototype from the approved worker catalog
+
+Required payload fields:
+
+- `worker_key`
+- `prototype_stage`
+
+Allowed `worker_key` values:
+
+- `W-01-builder`
+- `W-02-verifier`
+- `W-03-researcher`
+- `W-04-editor`
+- `W-05-watcher`
+
+Allowed `prototype_stage` values:
+
+- `prompt_only`
+
+## 9. V1 Scope Limit
 
 V1 does not include:
 

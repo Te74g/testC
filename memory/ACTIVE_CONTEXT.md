@@ -38,6 +38,14 @@ The immediate focus is to define the first safe execution loop that can keep wor
 - Codex approval-mode guidance from the sponsor has now been incorporated into project policy
 - Git backup discipline has now been incorporated into project policy
 - the repository has now been pushed to GitHub on `origin/main`
+- the first local worker-factory plan has now been documented
+- the relay runtime has now been hardened with an external trust policy and signed queued commands
+- the hardened runtime has been verified with one accepted signed command and one rejected untrusted sender
+- guarded external relay control has now been installed and verified so runtime start and enqueue can be pinned to trusted file hashes outside the repository
+- a blocked-identity denylist has now been initialized so known malicious Git identities can be refused before guarded runtime control continues
+- the relay bot can now accept `nc.worker.seed`, and the first five prompt-only worker prototypes have been materialized into `workers/prototypes`
+- this repository now has a project-scoped `.codex/config.toml` for safer everyday Codex approval-mode defaults
+- a low-approval steady-state plan is now being added so day-to-day worker loops stay mostly repo-local after setup
 
 ## 3. Current Document Set
 
@@ -57,6 +65,20 @@ Core policy documents currently include:
 - `COMMAND_RELAY_SPEC.md`
 - `CODEX_APPROVAL_MODES_POLICY.md`
 - `GIT_BACKUP_POLICY.md`
+- `LOCAL_WORKER_FACTORY.md`
+- `SECURITY_HARDENING.md`
+- `TRUST_POLICY_V1.md`
+- `runtime/identity-policy.example.v1.json`
+- `scripts/install-runtime-guard.ps1`
+- `scripts/bootstrap-v1-workers.ps1`
+- `scripts/materialize-worker-prototypes.ps1`
+- `workers/worker-catalog.v1.json`
+- `workers/README.md`
+- `.codex/config.toml`
+- `.codex/config.user-profiles.example.toml`
+- `.codex/README.md`
+- `LOW_APPROVAL_OPERATION_PLAN.md`
+- `scripts/daily-worker-cycle.ps1`
 - `memory/MEMORY_SYSTEM.md`
 - `memory/DURABLE_MEMORY.md`
 - `memory/ACTIVE_CONTEXT.md`
@@ -65,7 +87,9 @@ Core policy documents currently include:
 
 - define the first safe execution loop on top of the running relay runtime
 - add `nc.call` and `nc.resume` end-to-end tests
-- define the first local-LLM creation and refinement loop
+- define the first evaluation bundle for the generated worker prototypes
+- decide whether to also patch the user-level `~/.codex/config.toml` with named profiles
+- use the new low-approval steady-state plan to avoid unnecessary guarded-layer changes
 - prepare shared instruction templates specifically addressed to Claude Code
 - identify the first candidate money-making task categories
 - later design a bounded command-relay layer for self-resume and self-instruction
@@ -98,6 +122,9 @@ Core policy documents currently include:
 - unclear worker lease status should default to non-leasable until explicitly changed
 - the first autonomous-looking loop still has to stay within sponsor approval boundaries for cost, external action, and irreversible change
 - the current relay runtime is intentionally narrow and should stay low-risk until more commands are verified
+- guarded control should become the preferred runtime entrypoint after installation
+- covert file spraying into personal folders is explicitly out of bounds; blocked identities should be handled by denial and audit
+- the current worker creation loop is still prompt-only; model selection, testing, and promotion have not been automated yet
 
 ## 7. Cleanup Notes
 

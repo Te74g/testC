@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "require_signature": true,
+  "allowed_senders": [
+    "Northbridge Systems"
+  ],
+  "blocked_senders": [],
+  "allowed_receivers": [
+    "Northbridge Systems",
+    "Claude-side company",
+    "codex",
+    "claude"
+  ],
+  "command_rules": {
+    "nc.memory": {
+      "allowed_senders": [
+        "Northbridge Systems"
+      ]
+    },
+    "nc.call": {
+      "allowed_senders": [
+        "Northbridge Systems"
+      ]
+    },
+    "nc.resume": {
+      "allowed_senders": [
+        "Northbridge Systems"
+      ]
+    }
+  },
+  "hmac_secret": "replace-this-with-a-long-random-secret"
+}

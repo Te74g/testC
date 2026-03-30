@@ -1,0 +1,14 @@
+{
+  "version": "v1",
+  "blocked_git_usernames": [
+    "Ren9618"
+  ],
+  "blocked_git_emails": [],
+  "blocked_os_usernames": [],
+  "message_lines": [
+    "Malware creation is prohibited.",
+    "Do not harm people.",
+    "Do not misuse AI or use AI to abuse others."
+  ],
+  "audit_log_path": ""
+}

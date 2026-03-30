@@ -54,6 +54,29 @@
         "Claude-side company"
       ],
       "inbox": "resume"
+    },
+    "nc.worker.seed": {
+      "requiredPayload": [
+        "worker_key",
+        "prototype_stage"
+      ],
+      "allowedReceiver": [
+        "Northbridge Systems",
+        "Claude-side company"
+      ],
+      "allowedPayloadValues": {
+        "worker_key": [
+          "W-01-builder",
+          "W-02-verifier",
+          "W-03-researcher",
+          "W-04-editor",
+          "W-05-watcher"
+        ],
+        "prototype_stage": [
+          "prompt_only"
+        ]
+      },
+      "inbox": "worker"
     }
   }
 }
