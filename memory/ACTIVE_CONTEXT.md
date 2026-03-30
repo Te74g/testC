@@ -55,6 +55,10 @@ The immediate focus is to define the first safe execution loop that can keep wor
 - the current guarded-runtime and worker-factory batch has now been pushed to `origin/main`
 - worker promotion reviews and work-heartbeat logging now exist
 - the long-run supervisor has now been corrected, started, and verified through its first successful cycle
+- the continue loop now creates a rotating worker-lab iteration plan so each unattended cycle produces a visible new artifact
+- the continue loop now also writes a president-facing inbox message under `runtime/inbox/president`
+- the continue loop now drafts worker training briefs and prompt revision candidates for the current rotation target
+- the live supervisor has now verified the upgraded loop in cycle 2 by creating new `W-04-editor` education artifacts without manual intervention
 
 ## 3. Current Document Set
 
@@ -106,6 +110,10 @@ Core policy documents currently include:
 - use the new low-approval steady-state plan to avoid unnecessary guarded-layer changes
 - make the canonical continue command the normal path when the sponsor asks the system to keep moving
 - monitor the active 10-hour supervisor run and snapshot meaningful repo changes while it is active
+- watch the next supervisor cycle to confirm it advances the worker-lab rotation from `W-01-builder` to `W-02-verifier`
+- confirm that the next cycle also drops a new president inbox note rather than only updating logs
+- inspect the first generated training pack and decide whether to let the bot start proposing live prompt patches next
+- decide whether the next phase should stay at reversible education artifacts or begin controlled live prompt patch proposals for approved workers
 - apply the new-work quality gate before any new monetization or runtime expansion work
 - prepare shared instruction templates specifically addressed to Claude Code
 - identify the first candidate money-making task categories
@@ -144,6 +152,7 @@ Core policy documents currently include:
 - the current worker creation loop is still prompt-only; model selection, testing, and promotion have not been automated yet
 - the current long-run supervisor window started at 2026-03-31 03:06 JST and is scheduled to stop around 2026-03-31 13:06 JST if left undisturbed
 - the live supervisor PID is 85040 and the live relay bot PID is 45768
+- the first worker-lab artifact was created at `workers/lab/W-01-builder/20260331-031358-iteration-plan.md`
 
 ## 7. Cleanup Notes
 

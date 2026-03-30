@@ -25,5 +25,9 @@ Start-Sleep -Seconds 2
 Invoke-CheckedScript -ScriptName "materialize-worker-prototypes.ps1"
 Invoke-CheckedScript -ScriptName "scaffold-worker-evaluations.ps1"
 Invoke-CheckedScript -ScriptName "scaffold-worker-promotion-reviews.ps1"
+Invoke-CheckedScript -ScriptName "advance-worker-lab.ps1"
+Invoke-CheckedScript -ScriptName "draft-worker-training-pack.ps1"
+Invoke-CheckedScript -ScriptName "write-president-message.ps1"
+Invoke-CheckedScript -ScriptName "write-bot-work-heartbeat.ps1"
 
 Write-Output "continue bot work cycle complete"

@@ -32,8 +32,11 @@ Use these scripts from the project root:
 - `scripts/ensure-relay-bot.ps1`
 - `scripts/scaffold-worker-evaluations.ps1`
 - `scripts/scaffold-worker-promotion-reviews.ps1`
+- `scripts/advance-worker-lab.ps1`
+- `scripts/draft-worker-training-pack.ps1`
 - `scripts/continue-bot-work.ps1`
 - `scripts/write-bot-work-heartbeat.ps1`
+- `scripts/write-president-message.ps1`
 - `scripts/start-long-run-supervisor.ps1`
 - `scripts/status-long-run-supervisor.ps1`
 - `scripts/stop-long-run-supervisor.ps1`
@@ -130,6 +133,12 @@ Run the canonical continue command:
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\continue-bot-work.ps1
 ```
+
+This continue loop now creates one new worker-lab iteration plan on each pass so unattended cycles produce visible new artifacts instead of maintenance-only no-ops.
+
+It also writes a short president-facing inbox message under `runtime/inbox/president/` so the control plane has something explicit to read on the next executive check.
+
+It now drafts a worker training pack as well, so each cycle can produce a training brief and a prompt revision candidate for the current worker target.
 
 Start a long run:
 

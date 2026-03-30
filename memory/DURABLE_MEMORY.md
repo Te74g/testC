@@ -183,6 +183,10 @@ This is a formal operating mechanism, not an ad hoc exception.
 - 2026-03-31: Added worker promotion-review scaffolding, heartbeat writing, and a long-run supervisor so the low-risk repo loop can run for multi-hour unattended windows.
 - 2026-03-31: Corrected guarded-control resolution so repo scripts find the real `%USERPROFILE%\\.northbridge` path even when the sandbox exposes a different profile root.
 - 2026-03-31: Started and verified a 10-hour long-run supervisor window; the active run began at 2026-03-31 03:06 JST, targets 13:06 JST completion, and completed its first cycle successfully.
+- 2026-03-31: Converted the unattended loop from maintenance-only behavior into visible work by adding a rotating worker-lab planner that creates one new worker iteration plan per cycle.
+- 2026-03-31: Added a president inbox writer so unattended cycles leave a short executive-facing message instead of only silent logs and artifacts.
+- 2026-03-31: Added a worker education layer that drafts a training brief and prompt revision candidate for the latest worker-lab target instead of only accumulating evaluation scaffolds.
+- 2026-03-31: Verified that the long-run supervisor can now create real education artifacts during unattended operation; by cycle 2 it had already produced new lab/training/president-inbox artifacts for `W-04-editor`.
 
 ## 12. Failure and Rejection Reference
 
@@ -232,3 +236,6 @@ This rule is mandatory, not advisory.
 - Continuous work should include candidate generation, but weak new work must be filtered out before bot continuation.
 - The interruption threshold for new work is below 40, not below 80; scores 40 and above continue with reframing duties.
 - When sandbox and real user-home paths diverge, resolve guarded-control paths from multiple candidates and prefer an existing external `.northbridge` over blindly trusting the current process profile.
+- If unattended work looks idle, first check whether the loop is only maintaining existing artifacts; visible progress requires at least one per-cycle artifact generator, not just scaffold-upkeep scripts.
+- Execution-plane work is not the same as control-plane messaging; if the bot should "talk to the president," add an explicit inbox artifact or bridge instead of assuming logs are enough.
+- Worker education should stay reversible at first: create training briefs and prompt revision candidates before touching the live worker prompt.
