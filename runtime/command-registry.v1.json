@@ -1,0 +1,59 @@
+{
+  "version": "v1",
+  "commands": {
+    "nc.memory": {
+      "requiredPayload": [
+        "memory_target",
+        "operation"
+      ],
+      "allowedReceiver": [
+        "Northbridge Systems",
+        "Claude-side company"
+      ],
+      "allowedPayloadValues": {
+        "memory_target": [
+          "durable",
+          "active",
+          "both"
+        ],
+        "operation": [
+          "refresh",
+          "cleanup",
+          "review"
+        ]
+      },
+      "inbox": "memory"
+    },
+    "nc.call": {
+      "requiredPayload": [
+        "target_company",
+        "topic",
+        "desired_output"
+      ],
+      "allowedReceiver": [
+        "Northbridge Systems",
+        "Claude-side company"
+      ],
+      "allowedPayloadValues": {
+        "target_company": [
+          "Northbridge Systems",
+          "Claude-side company"
+        ]
+      },
+      "inbox": "call"
+    },
+    "nc.resume": {
+      "requiredPayload": [
+        "task_id",
+        "bundle_path"
+      ],
+      "allowedReceiver": [
+        "codex",
+        "claude",
+        "Northbridge Systems",
+        "Claude-side company"
+      ],
+      "inbox": "resume"
+    }
+  }
+}

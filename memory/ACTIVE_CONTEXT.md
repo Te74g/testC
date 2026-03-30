@@ -1,0 +1,122 @@
+# Working Memory
+
+This file is the mandatory working memory for current execution state.
+
+## 1. Current Objective
+
+Move from documented policy into the first operational setup for creating and refining distinctive local LLM workers.
+
+The immediate focus is to define the first safe execution loop that can keep working even when the sponsor is not continuously present.
+
+## 2. What Has Been Established
+
+- `Northbridge Systems` has been chosen as the Codex-side company name
+- the Claude-side company name is intentionally left for Claude Code to choose
+- a shared foundation has been written
+- worker creation rules have been written
+- intercompany coordination rules have been written
+- sponsor approval rules have been written
+- GPT/sponsor research brokering has been written
+- direct instructions to Claude in shared documents are allowed if they stay scoped and are cleaned up after completion
+- a two-layer memory system has now been introduced
+- memory updates have been elevated from recommended practice to mandatory operating discipline
+- the recent self-check clarified that the main deficit so far was process order, not lack of affirmation
+- an explicit process-order document has now been added
+- the first presidents' meeting pack has been created
+- the first worker roster has been created
+- a long-term premise has been clarified: subordinate workers or bots should eventually be able to relay predefined commands that resume or redirect work
+- a command-relay specification has now been created
+- background continuity and low interruption have now been added as explicit design goals
+- intercompany worker leasing has now been added as an intended operating feature
+- worker leasing has been tightened so leasable and non-leasable workers are now explicitly separated
+- the background model has been clarified as control plane plus execution plane
+- the capability question has been clarified: the main risk is context-fidelity loss during resume, not automatic loss of core reasoning ability
+- the early mission has been clarified as building and operating the system to create distinctive local LLM workers with less sponsor babysitting
+- the unattended-operation question has been clarified: without a bot/runtime layer, the system cannot truly continue alone after the interactive session ends
+- session detox and sleep-on-usage-cap rules have now been added
+- the first local relay runtime has now been implemented and a queued `nc.memory` command has been processed successfully end-to-end
+- Codex approval-mode guidance from the sponsor has now been incorporated into project policy
+- Git backup discipline has now been incorporated into project policy
+
+## 3. Current Document Set
+
+Core policy documents currently include:
+
+- `COMPANY_FOUNDATION.md`
+- `WORKER_CREATION_MANUAL.md`
+- `ORGANIZATION_REGISTRY.md`
+- `INTERCOMPANY_PROTOCOL.md`
+- `SPONSOR_APPROVAL_MANUAL.md`
+- `GPT_RESEARCH_BROKER.md`
+- `PROCESS_ORDER.md`
+- `COMMAND_REGISTRY_V1.md`
+- `QUEUE_SCHEMA_V1.md`
+- `SESSION_CONTINUITY_PROTOCOL.md`
+- `BACKGROUND_OPERATION_SPEC.md`
+- `COMMAND_RELAY_SPEC.md`
+- `CODEX_APPROVAL_MODES_POLICY.md`
+- `GIT_BACKUP_POLICY.md`
+- `memory/MEMORY_SYSTEM.md`
+- `memory/DURABLE_MEMORY.md`
+- `memory/ACTIVE_CONTEXT.md`
+
+## 4. Likely Next Steps
+
+- define the first safe execution loop on top of the running relay runtime
+- add `nc.call` and `nc.resume` end-to-end tests
+- define the first local-LLM creation and refinement loop
+- prepare shared instruction templates specifically addressed to Claude Code
+- identify the first candidate money-making task categories
+- later design a bounded command-relay layer for self-resume and self-instruction
+- later create the command registry file and first safe relay commands
+- later define the local queue format and minimal background relay bot
+- the minimal bot/runtime layer is now a prerequisite for meaningful unattended operation
+- later test the first safe leased-worker use case between the two companies
+- later ensure the bot runtime avoids blind retry loops when a target is sleeping or capped
+- later design stronger task bundles so resumed work keeps high-fidelity context
+- later replace `Claude-side company` with its chosen permanent name
+
+## 5. Open Questions
+
+- what permanent name Claude Code will choose for its own company
+- what the first real money-making task categories should be
+- which first worker roles should exist before live execution begins
+
+## 6. Active Constraints
+
+- sponsor approval remains mandatory for money, external actions, and irreversible actions
+- active context should stay compact and be cleaned aggressively
+- durable memory should hold stable decisions only
+- the intent file must be updated on every meaningful work cycle
+- working memory should be updated on every work cycle by default
+- future expansion should follow a clearer process order than the initial pass did
+- the current active phase is worker bootstrap
+- the next transition is from worker bootstrap into execution sandbox design
+- future self-instruction must be structured as bounded relay commands, not as unrestricted executive authority
+- background continuity should be achieved through persistent infrastructure, not by relying on the current interactive session to remain active
+- unclear worker lease status should default to non-leasable until explicitly changed
+- the first autonomous-looking loop still has to stay within sponsor approval boundaries for cost, external action, and irreversible change
+- the current relay runtime is intentionally narrow and should stay low-risk until more commands are verified
+
+## 7. Cleanup Notes
+
+Delete or condense items in this file when:
+
+- the step is complete
+- the question is resolved
+- the plan has changed
+- the note no longer helps the next execution step
+
+If a line becomes permanently important, move the durable part into `DURABLE_MEMORY.md`.
+
+## 8. Working Memory Update Rule
+
+This file should be updated on basically every work cycle.
+
+If it is not updated, that should be rare and should only happen when there is truly no meaningful change in state.
+
+Default expectation:
+
+- refresh what changed
+- refresh what is next
+- remove stale lines
