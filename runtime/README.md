@@ -29,6 +29,14 @@ Use these scripts from the project root:
 - `scripts/bootstrap-v1-workers.ps1`
 - `scripts/materialize-worker-prototypes.ps1`
 - `scripts/daily-worker-cycle.ps1`
+- `scripts/ensure-relay-bot.ps1`
+- `scripts/scaffold-worker-evaluations.ps1`
+- `scripts/scaffold-worker-promotion-reviews.ps1`
+- `scripts/continue-bot-work.ps1`
+- `scripts/write-bot-work-heartbeat.ps1`
+- `scripts/start-long-run-supervisor.ps1`
+- `scripts/status-long-run-supervisor.ps1`
+- `scripts/stop-long-run-supervisor.ps1`
 
 ## Trust Policy
 
@@ -115,6 +123,24 @@ Run the normal repo-local worker cycle:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\daily-worker-cycle.ps1
+```
+
+Run the canonical continue command:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\continue-bot-work.ps1
+```
+
+Start a long run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\start-long-run-supervisor.ps1 -Hours 10 -IntervalMinutes 15
+```
+
+Check long-run status:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\status-long-run-supervisor.ps1
 ```
 
 Stop:

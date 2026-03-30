@@ -135,6 +135,10 @@ This is a formal operating mechanism, not an ad hoc exception.
 - the first worker creation runtime loop should be `nc.worker.seed -> runtime/inbox/worker -> materialize-worker-prototypes -> workers/prototypes`
 - this repository should carry a project-scoped Codex config that defaults to `on-request + workspace-write + network_access=false`, while stronger profiles stay user-scoped
 - after guarded setup, the operating goal should be a low-approval steady state where most cycles stay repo-local and external trust updates happen only in batches
+- when the sponsor asks to continue, the standard entrypoint should be `scripts/continue-bot-work.ps1`, and the bot should normally keep low-risk work available
+- for multi-hour unattended windows, the standard launcher should be `scripts/start-long-run-supervisor.ps1`
+- net-new work must go through web-based multi-angle analysis and a 0-100 self-check score before entering the bot loop
+- only scores below 40 should truly interrupt new work; scores 40 and above stay in managed circulation with mandatory reframing based on score band
 
 ## 11. Success Reference
 
@@ -170,7 +174,15 @@ This is a formal operating mechanism, not an ad hoc exception.
 - 2026-03-31: Added `nc.worker.seed`, created the worker catalog and materializer, and generated the first five prompt-only worker prototypes through the relay bot path.
 - 2026-03-31: Introduced a project-scoped `.codex/config.toml` so this repository defaults to a `--full-auto`-style local workflow without making networked unattended mode the repo default.
 - 2026-03-31: Added a low-approval operation plan so daily work shifts from repeated runtime surgery toward repo-local worker cycles.
+- 2026-03-31: Added a continuous-work policy and canonical continue command so progress can resume through one standard bot-work entrypoint.
+- 2026-03-31: Verified the canonical continue command end to end: ensure relay bot, skip already-built prototypes, materialize inbox work, and scaffold evaluation bundles.
+- 2026-03-31: Added a mandatory new-work quality gate with web analysis, score bands, rebuild paths, and interruption thresholds.
+- 2026-03-31: Added a reusable new-work scorecard template so the quality gate can be applied in a consistent format.
+- 2026-03-31: Corrected the quality-gate rule so scores `40+` still continue under bot management, with mandatory approach changes rather than interruption.
 - 2026-03-31: Pushed the guarded runtime, worker factory, Codex config, and low-approval flow set to `origin/main` at commit `90a0566`.
+- 2026-03-31: Added worker promotion-review scaffolding, heartbeat writing, and a long-run supervisor so the low-risk repo loop can run for multi-hour unattended windows.
+- 2026-03-31: Corrected guarded-control resolution so repo scripts find the real `%USERPROFILE%\\.northbridge` path even when the sandbox exposes a different profile root.
+- 2026-03-31: Started and verified a 10-hour long-run supervisor window; the active run began at 2026-03-31 03:06 JST, targets 13:06 JST completion, and completed its first cycle successfully.
 
 ## 12. Failure and Rejection Reference
 
@@ -180,6 +192,7 @@ This is a formal operating mechanism, not an ad hoc exception.
 - 2026-03-31: Treating process feedback as a tone issue instead of an execution-order issue was a mistaken read and has been corrected.
 - 2026-03-31: PowerShell 5.1 caused two runtime wrinkles during bot launch: `Start-Process` environment collisions and UTF-8 BOM on queued JSON. Both were corrected.
 - 2026-03-31: PowerShell 5.1 caused additional trust-runtime wrinkles around `ConvertFrom-Json -AsHashtable`, sandbox-vs-user home paths, and HMAC construction. These were corrected.
+- 2026-03-31: The first long-run supervisor start attempt only half-worked because guarded-control lookup followed the sandbox profile root (`CodexSandboxOffline`) instead of the sponsor's real home path; the path-resolution logic and supervisor launcher were simplified and corrected.
 
 ## 13. Intent File Update Rule
 
@@ -215,3 +228,7 @@ This rule is mandatory, not advisory.
 - For worker bootstrap, start with queue-delivered prompt prototypes before adding evaluation automation or model tuning.
 - Keep safer daily Codex defaults in project config, but keep stronger named profiles in user config so risky modes remain an explicit operator choice.
 - After setup, prefer changing the runtime rarely and doing normal work through repo-local cycles.
+- Standardize resumption through one canonical continue command instead of ad hoc operator choices.
+- Continuous work should include candidate generation, but weak new work must be filtered out before bot continuation.
+- The interruption threshold for new work is below 40, not below 80; scores 40 and above continue with reframing duties.
+- When sandbox and real user-home paths diverge, resolve guarded-control paths from multiple candidates and prefer an existing external `.northbridge` over blindly trusting the current process profile.

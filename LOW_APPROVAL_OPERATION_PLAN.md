@@ -56,6 +56,7 @@ Make these routine:
 
 - enqueue worker tasks
 - materialize worker prototypes
+- scaffold worker evaluation bundles
 - update memory
 - write evaluation bundles
 - review generated outputs
@@ -91,3 +92,15 @@ The next practical goal is to shift effort from runtime modification into:
 - worker promotion decisions
 - money-making task experiments
 - queue-driven execution loops
+
+Net-new experiments still need the quality gate before they enter steady-state execution.
+
+## 8. Canonical Continue Entry Point
+
+To reduce ad hoc operator choices, the preferred continue command is:
+
+- `scripts/continue-bot-work.ps1`
+
+This entrypoint should be the default when the sponsor simply wants the system to keep moving.
+
+If the continue command runs out of routine backlog, the next step is candidate generation followed by the new-work quality gate.

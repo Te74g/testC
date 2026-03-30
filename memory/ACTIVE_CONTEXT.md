@@ -46,7 +46,15 @@ The immediate focus is to define the first safe execution loop that can keep wor
 - the relay bot can now accept `nc.worker.seed`, and the first five prompt-only worker prototypes have been materialized into `workers/prototypes`
 - this repository now has a project-scoped `.codex/config.toml` for safer everyday Codex approval-mode defaults
 - a low-approval steady-state plan is now being added so day-to-day worker loops stay mostly repo-local after setup
+- a continuous-work rule is now being added so the standard response to "continue" is a canonical bot-work command
+- the canonical continue command has now been verified end to end and can be used as the normal path when the sponsor says to keep moving
+- a long-run supervisor is now being added so the current low-risk work loop can stay active for multi-hour windows
+- a mandatory new-work quality gate is now being added so net-new work is researched and scored before entering the bot loop
+- the new-work quality gate now has a reusable scorecard template for actual use
+- the quality-gate banding has been corrected so only scores below 40 interrupt; scores 40 and above continue with required reframing
 - the current guarded-runtime and worker-factory batch has now been pushed to `origin/main`
+- worker promotion reviews and work-heartbeat logging now exist
+- the long-run supervisor has now been corrected, started, and verified through its first successful cycle
 
 ## 3. Current Document Set
 
@@ -80,6 +88,11 @@ Core policy documents currently include:
 - `.codex/README.md`
 - `LOW_APPROVAL_OPERATION_PLAN.md`
 - `scripts/daily-worker-cycle.ps1`
+- `CONTINUOUS_WORK_POLICY.md`
+- `scripts/ensure-relay-bot.ps1`
+- `scripts/scaffold-worker-evaluations.ps1`
+- `scripts/continue-bot-work.ps1`
+- `NEW_WORK_QUALITY_GATE.md`
 - `memory/MEMORY_SYSTEM.md`
 - `memory/DURABLE_MEMORY.md`
 - `memory/ACTIVE_CONTEXT.md`
@@ -91,6 +104,9 @@ Core policy documents currently include:
 - define the first evaluation bundle for the generated worker prototypes
 - decide whether to also patch the user-level `~/.codex/config.toml` with named profiles
 - use the new low-approval steady-state plan to avoid unnecessary guarded-layer changes
+- make the canonical continue command the normal path when the sponsor asks the system to keep moving
+- monitor the active 10-hour supervisor run and snapshot meaningful repo changes while it is active
+- apply the new-work quality gate before any new monetization or runtime expansion work
 - prepare shared instruction templates specifically addressed to Claude Code
 - identify the first candidate money-making task categories
 - later design a bounded command-relay layer for self-resume and self-instruction
@@ -126,6 +142,8 @@ Core policy documents currently include:
 - guarded control should become the preferred runtime entrypoint after installation
 - covert file spraying into personal folders is explicitly out of bounds; blocked identities should be handled by denial and audit
 - the current worker creation loop is still prompt-only; model selection, testing, and promotion have not been automated yet
+- the current long-run supervisor window started at 2026-03-31 03:06 JST and is scheduled to stop around 2026-03-31 13:06 JST if left undisturbed
+- the live supervisor PID is 85040 and the live relay bot PID is 45768
 
 ## 7. Cleanup Notes
 

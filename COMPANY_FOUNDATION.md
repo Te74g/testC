@@ -356,3 +356,34 @@ These rules are defined in:
 
 - `CODEX_APPROVAL_MODES_POLICY.md`
 - `GIT_BACKUP_POLICY.md`
+
+## 19. Continuous Work Rule
+
+The organization should not rely on ad hoc resumption when safe backlog remains.
+
+The default expectation is:
+
+- if low-risk approved work remains, keep the worker system moving
+- when the sponsor asks to continue, use the standard bot-work entrypoint rather than inventing a new path each time
+- idle state should be explicit and explainable
+
+The detailed operating rule is defined in:
+
+- `CONTINUOUS_WORK_POLICY.md`
+
+## 20. New Work Quality Gate
+
+The organization should not let net-new work enter the bot loop without prior web-based multi-angle analysis and a self-check score.
+
+The quality gate is mandatory for:
+
+- new task categories
+- new monetization attempts
+- new automation types
+- new worker classes
+- new integrations
+- new runtime capabilities
+
+The detailed gate is defined in:
+
+- `NEW_WORK_QUALITY_GATE.md`

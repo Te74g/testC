@@ -1,9 +1,17 @@
-param()
+param(
+  [switch]$Force
+)
 
-$ControlPath = Join-Path ([Environment]::GetFolderPath("UserProfile")) ".northbridge\northbridge-relay-control.ps1"
+. (Join-Path $PSScriptRoot "resolve-northbridge-path.ps1")
+
+$ProjectRoot = Split-Path -Parent $PSScriptRoot
+$ControlPath = Resolve-NorthbridgeControlPath -ProjectRoot $ProjectRoot -RequireExisting
 if (-not (Test-Path $ControlPath)) {
-  throw "guarded relay control not found at $ControlPath"
+  $Candidates = Get-NorthbridgeRootCandidates -ProjectRoot $ProjectRoot
+  throw "guarded relay control not found. candidates: $($Candidates -join ', ')"
 }
+
+$PrototypeRoot = Join-Path $ProjectRoot "workers\prototypes"
 
 $Seeds = @(
   @{ worker_key = "W-01-builder"; receiver = "Northbridge Systems"; reason = "seed Builder prompt-only prototype" },
@@ -14,6 +22,15 @@ $Seeds = @(
 )
 
 foreach ($Seed in $Seeds) {
+  $PrototypeDir = Join-Path $PrototypeRoot $Seed.worker_key
+  $ProfilePath = Join-Path $PrototypeDir "profile.json"
+  $PromptPath = Join-Path $PrototypeDir "prompt.md"
+
+  if (-not $Force -and (Test-Path $ProfilePath) -and (Test-Path $PromptPath)) {
+    Write-Output "skip existing prototype: $($Seed.worker_key)"
+    continue
+  }
+
   powershell -ExecutionPolicy Bypass -File $ControlPath `
     -Action Enqueue `
     -Command nc.worker.seed `
@@ -24,4 +41,4 @@ foreach ($Seed in $Seeds) {
     -PrototypeStage prompt_only
 }
 
-Write-Output "worker bootstrap commands enqueued"
+Write-Output "worker bootstrap pass complete"
