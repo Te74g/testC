@@ -37,6 +37,7 @@ The immediate focus is to define the first safe execution loop that can keep wor
 - the first local relay runtime has now been implemented and a queued `nc.memory` command has been processed successfully end-to-end
 - Codex approval-mode guidance from the sponsor has now been incorporated into project policy
 - Git backup discipline has now been incorporated into project policy
+- the repository has now been pushed to GitHub on `origin/main`
 
 ## 3. Current Document Set
 

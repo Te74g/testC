@@ -151,6 +151,7 @@ This is a formal operating mechanism, not an ad hoc exception.
 - 2026-03-31: Implemented the first local relay runtime with file-based queue, command registry, start/stop/status wrappers, and verified `nc.memory` end-to-end.
 - 2026-03-31: Added a Codex approval-modes policy so automation strength can increase in tiers instead of through immediate unrestricted usage.
 - 2026-03-31: Added a Git backup policy so autonomous or background changes are paired with regular recoverable snapshots.
+- 2026-03-31: Initialized Git history, renamed the branch to `main`, connected `origin` to the sponsor-provided GitHub repository, and pushed the first snapshot successfully.
 
 ## 12. Failure and Rejection Reference
 
