@@ -170,6 +170,7 @@ This is a formal operating mechanism, not an ad hoc exception.
 - 2026-03-31: Added `nc.worker.seed`, created the worker catalog and materializer, and generated the first five prompt-only worker prototypes through the relay bot path.
 - 2026-03-31: Introduced a project-scoped `.codex/config.toml` so this repository defaults to a `--full-auto`-style local workflow without making networked unattended mode the repo default.
 - 2026-03-31: Added a low-approval operation plan so daily work shifts from repeated runtime surgery toward repo-local worker cycles.
+- 2026-03-31: Pushed the guarded runtime, worker factory, Codex config, and low-approval flow set to `origin/main` at commit `90a0566`.
 
 ## 12. Failure and Rejection Reference
 

@@ -46,6 +46,7 @@ The immediate focus is to define the first safe execution loop that can keep wor
 - the relay bot can now accept `nc.worker.seed`, and the first five prompt-only worker prototypes have been materialized into `workers/prototypes`
 - this repository now has a project-scoped `.codex/config.toml` for safer everyday Codex approval-mode defaults
 - a low-approval steady-state plan is now being added so day-to-day worker loops stay mostly repo-local after setup
+- the current guarded-runtime and worker-factory batch has now been pushed to `origin/main`
 
 ## 3. Current Document Set
 
