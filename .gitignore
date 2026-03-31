@@ -1,5 +1,1 @@
-runtime/inbox/
-runtime/logs/
-runtime/queue/
-runtime/state/
-runtime/trust-policy.local.json
+node_modules/

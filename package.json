@@ -1,0 +1,23 @@
+{
+  "name": "testc",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Te74g/testC.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Te74g/testC/issues"
+  },
+  "homepage": "https://github.com/Te74g/testC#readme",
+  "description": "",
+  "dependencies": {
+    "zenn-cli": "^0.4.7"
+  }
+}

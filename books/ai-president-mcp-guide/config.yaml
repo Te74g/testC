@@ -1,0 +1,10 @@
+title: "Claude Code + Ollama + MCPで「AI社長組織」を作る実践ガイド"
+summary: "Claude Codeを社長、ローカルLLM（Ollama + Qwen 2.5 Coder 14B）を部下ワーカーとして、MCPメッセージバスで指揮する「AI組織」を実際に構築する。環境構築からMCPサーバー自作、ワーカー接続、プロンプト訓練まで、動くコード付きで解説。"
+topics: ["claudecode", "mcp", "ollama", "llm", "ai"]
+published: true
+price: 1500
+chapters:
+  - 01-what-is-ai-president
+  - 02-setup
+  - 03-mcp-message-bus
+  - 04-worker-runner
