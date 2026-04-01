@@ -5,8 +5,7 @@ free: false
 
 # local LLM runtime を死なせない
 
-AI社長組織を local-first で運用するなら、
-local LLM runtime は心臓に近い。
+AI社長組織を local-first で運用するなら、local LLM runtime は心臓に近い。
 
 worker がどれだけ良くても、
 
@@ -16,8 +15,7 @@ worker がどれだけ良くても、
 
 となれば、推論は止まる。
 
-ここで雑な設計をすると、
-**runtime が死んだ瞬間に組織全体まで巻き添えで止まる。**
+ここで雑な設計をすると、**runtime が死んだ瞬間に組織全体まで巻き添えで止まる。**
 
 Northbridge Systems がやりたいのは、それを避けることだ。
 
@@ -34,7 +32,7 @@ runtime 障害で本当に危ないのは、「落ちること」そのもので
 
 という状態だ。
 
-これは、組織的には silent failure に近い。
+これは、組織的には silent failure に近い。Northbridge 本としては、ここを「よくあること」で流さない。
 
 だから Northbridge では、まず
 
@@ -56,15 +54,15 @@ local runtime health の中核はこれだ。
 4. state file に結果を書く  
 5. 必要なら bounded auto-recovery を試す
 
-つまり、
-**runtime の真実を worker 任せにしない**
-ということだ。
+つまり、**runtime の真実を worker 任せにしない** ということだ。
 
 worker は推論の利用者であって、runtime health の一次判定者ではない。
 
 ## config を分離する理由
 
 runtime health は、binding と recovery policy を分けて持つ。
+
+ここを分けないと、「どのモデルを使うか」と「どう復旧するか」が一緒に崩れる。
 
 このプロジェクトでは:
 

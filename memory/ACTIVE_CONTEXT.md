@@ -52,12 +52,14 @@ Do not drift back into easy publication-doc expansion unless the sponsor explici
   - `products/runtime-audit-studio/PROFILE_DRAFT_V1.md`
   - `products/runtime-audit-studio/PROFILE_APPROVAL_SHEET_V1.md`
   - `products/runtime-audit-studio/OUTREACH_COPY_V1.md`
+  - `products/runtime-audit-studio/MARKETPLACE_LISTING_DRAFT_V1.md`
   - `products/runtime-audit-studio/FINAL_PUBLICATION_PACKET_V1.md`
   - `products/runtime-audit-studio/FINAL_PUBLIC_STACK_INDEX_V1.md`
   - `products/runtime-audit-studio/FIRST_RELEASE_DECISION_SHEET_V1.md`
   - `products/runtime-audit-studio/PUBLIC_RELEASE_SEQUENCE_PLAN_V1.md`
-  - current reality: strongest first sellable artifact because it is evidence-first and deterministic, and it now has offer/intake/quote packaging, sponsor-facing review and decision layers, a sharper public-summary draft with more explicit Northbridge voice, a publication gate for that summary, a short external profile draft, a publication gate for that profile, first-pass outreach wording, a bundled final publication packet, a simple public-stack index, a first-release decision layer, and a release-sequence note
+  - current reality: strongest first sellable artifact because it is evidence-first and deterministic, and it now has offer/intake/quote packaging, sponsor-facing review and decision layers, a sharper public-summary draft with more explicit Northbridge voice, a publication gate for that summary, a short external profile draft, a publication gate for that profile, first-pass outreach wording, a marketplace-oriented listing draft, a bundled final publication packet, a simple public-stack index, a first-release decision layer, and a release-sequence note
 - Northbridge-side publishing path:
+  - `northbridge/output/zenn-book/config.yaml`
   - `northbridge/output/zenn-book/00-book-config.md`
   - `northbridge/output/zenn-book/01-why-ai-president-needs-runtime-os.md`
   - `northbridge/output/zenn-book/02-northbridge-systems-overview.md`
@@ -67,7 +69,8 @@ Do not drift back into easy publication-doc expansion unless the sponsor explici
   - `northbridge/output/zenn-book/06-dream-and-memory-compaction.md`
   - `northbridge/output/zenn-book/07-runtime-audit-studio.md`
   - `northbridge/output/zenn-book/08-raising-autonomy-without-breaking-approval.md`
-  - current reality: companion book scaffold exists and now covers a complete chapter set from 1 to 8, cleanly distinct from the Southgate-side organization/MCP book
+  - `northbridge/output/zenn-book/09-why-codex-took-longer-than-claude.md`
+  - current reality: companion book scaffold exists and now covers a complete chapter set from 1 to 9, including an explicit comparison chapter on why Southgate/Claude reached publishable shape faster while Northbridge/Codex had to grind through runtime proof, drift, and correction; a real Zenn `config.yaml` now exists and the chapter order is fixed for publication
 
 ## 4. Workers
 
@@ -128,10 +131,14 @@ This compaction cycle exists because of that warning.
 
 ## 7. Immediate Next Steps
 
-- checkpoint current runtime and product progress with git
-- decide whether the technical brief generator should be repaired further or kept internal-only for now
+- the Northbridge book has now crossed from publish-ready to release-state
+- `northbridge/output/zenn-book/config.yaml` is now `published: true`
+- `11-publication-decision-sheet.md` now says `publish now`
+- `12-publication-packet.md` now records the first release as go
+- next step is commit + push from the clean clone so the publish-state book is captured in Git
+- keep Runtime Audit Studio moving, but do not let it delay the first real Northbridge publication
 - get one real auto-recovery proof for Ollama instead of only healthy-path verification
-- decide whether to polish the Northbridge book into publishable form or keep product packaging first
+- decide whether the technical brief generator should be repaired further or kept internal-only for now
 - only then return to deeper `.codex/src` reuse:
   - stronger Dream
   - stronger scheduler

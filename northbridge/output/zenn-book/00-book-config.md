@@ -9,6 +9,7 @@
 - **立ち位置:** Southgate本が「AI社長組織を立ち上げる本」なら、本書は「AI社長組織を運用し、壊れたら直し、売れる形に整える本」
 - **差別化:** 概念説明ではなく、実際に壊れた runtime をどう直したか、worker 品質をどう上げたか、どう商品へ寄せたかまでを書く
 - **無料公開:** 第1〜2章
+- **公開比較軸:** Southgate本は「立ち上げ本」、Northbridge本は「止めない本」。第9章で速度差と難航理由を正面から比較する
 
 ## 本書の狙い
 
@@ -77,6 +78,13 @@ AI社長組織は、作るだけなら意外とできる。
 - worker escalation
 - 自律化と無断実行は違う
 
+**第9章: なぜClaudeは一発でまとまり、Codexは難航したのか**
+- Southgate/Claude はなぜ早かったか
+- Northbridge/Codex はなぜ重かったか
+- 役割差で説明できる部分
+- drift と過大評価という失敗
+- 始める本と止めない本の違い
+
 **付録A: 状態ファイル一覧**
 **付録B: 障害例と復旧例**
 **付録C: worker評価テンプレート**
@@ -98,3 +106,13 @@ AI社長組織は、作るだけなら意外とできる。
 - 実際に売り物へ変換する道筋
 
 を、一つの系として見せることにある。
+
+## Publish Readiness
+
+Zenn 用の実 config は `northbridge/output/zenn-book/config.yaml` に置く。
+
+初回 publish では:
+
+- `published: false` のまま commit する
+- 最終確認後に `published: true` へ切り替える
+- Southgate 本との比較は第9章で明示する

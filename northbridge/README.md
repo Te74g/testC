@@ -27,3 +27,26 @@ northbridge/output/zenn-book/
 ```
 
 Its goal is to complement, not duplicate, the Southgate-side book.
+
+## Publication State
+
+The Northbridge book now has:
+
+- a real Zenn publication manifest:
+  - `northbridge/output/zenn-book/config.yaml`
+- chapter files `01` through `09`
+- an explicit comparison chapter on why Southgate/Claude reached publishable shape faster while Northbridge/Codex took longer
+
+Current status:
+
+- structurally publishable
+- release manifest switched to publish state
+- current release posture: publish now
+
+## Release Pack
+
+Publication support files now also exist under:
+
+- `northbridge/output/zenn-book/10-publication-checklist.md`
+- `northbridge/output/zenn-book/11-publication-decision-sheet.md`
+- `northbridge/output/zenn-book/12-publication-packet.md`

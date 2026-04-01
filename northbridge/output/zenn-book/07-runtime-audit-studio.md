@@ -5,14 +5,13 @@ free: false
 
 # Runtime Audit Studio を作る
 
-AI社長組織を運用していると、
-「この仕組みで何を売るのか」という問題に必ずぶつかる。
+AI社長組織を運用していると、「この仕組みで何を売るのか」という問題に必ずぶつかる。
 
 ここでありがちなのは、
 local LLM に長い brief を書かせて、
 それをそのまま商品にしようとすることだ。
 
-しかし Northbridge Systems は、そこを少し慎重に見た。
+しかし Northbridge Systems は、そこをかなり慎重に見た。
 
 結論から言うと、
 最初の実売ラインとして強いのは
@@ -43,8 +42,7 @@ local LLM に長い brief を書かせて、
 - handoff や explicit recommendation が弱い
 - unexpected non-ASCII や構造崩れが混じる
 
-つまり、**見た目はそれっぽいが、そのまま売るには不安定**
-だった。
+つまり、**見た目はそれっぽいが、そのまま売るには不安定** だった。
 
 ## Technical Brief Studio の現在地
 
@@ -81,9 +79,7 @@ review artifact には、たとえば次が出ていた。
 - handoff owner が無い
 - non-ASCII な文字が混じる
 
-つまり、Technical Brief Studio は
-**内部実験としては有用だが、外販品質としてはまだ弱い**
-という評価になる。
+つまり、Technical Brief Studio は **内部実験としては有用だが、外販品質としてはまだ弱い** という評価になる。
 
 ## そこで Runtime Audit Studio を先に出す
 
@@ -97,6 +93,8 @@ Northbridge 側はここで方針を変えた。
 
 - runtime state と log を読む
 - deterministic に audit pack を作る
+
+この選択は地味だが正しい。運用本の最初の商品は、華やかさより再現性を優先すべきだからだ。
 
 方式へ寄せた。
 

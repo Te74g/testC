@@ -41,6 +41,7 @@ Commercial packaging for this product line now lives here:
 - `products/runtime-audit-studio/PROFILE_DRAFT_V1.md`
 - `products/runtime-audit-studio/PROFILE_APPROVAL_SHEET_V1.md`
 - `products/runtime-audit-studio/OUTREACH_COPY_V1.md`
+- `products/runtime-audit-studio/MARKETPLACE_LISTING_DRAFT_V1.md`
 - `products/runtime-audit-studio/FINAL_PUBLICATION_PACKET_V1.md`
 - `products/runtime-audit-studio/FINAL_PUBLIC_STACK_INDEX_V1.md`
 - `products/runtime-audit-studio/FIRST_RELEASE_DECISION_SHEET_V1.md`

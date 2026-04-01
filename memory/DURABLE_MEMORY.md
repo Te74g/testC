@@ -106,8 +106,14 @@ Sponsor approval is mandatory for:
 - `Runtime Audit Studio` now also has a final public stack index, so the current summary/profile/outreach layers can be selected from one short release map
 - `Runtime Audit Studio` now also has a first-release decision sheet, with summary as the recommended first public asset
 - `Runtime Audit Studio` now also has a public release sequence plan: summary first, profile second, outreach as supporting signal
+- `Runtime Audit Studio` now also has a marketplace-facing listing draft, making its sales surface less generic and more usable on platforms such as Upwork or Contra
 - a Northbridge-side companion Zenn book scaffold now exists under `northbridge/output/zenn-book/`
-- the Northbridge-side book now has book config plus chapters 1 to 8, focused on runtime/operations rather than Southgate's organization/MCP angle
+- the Northbridge-side book now has book config plus chapters 1 to 9, focused on runtime/operations rather than Southgate's organization/MCP angle, and it now explicitly records why Southgate/Claude reached publishable shape faster while Northbridge/Codex struggled with verification, runtime proof, and drift
+- the Northbridge-side book now also has a real Zenn `config.yaml`, so it is no longer only a design memo set; it now has an actual publication manifest with fixed chapter order
+- the Northbridge-side book has started publish-quality wording cleanup, with chapters 1, 2, and 9 tightened to make the Southgate/Northbridge split and the Claude-vs-Codex comparison clearer
+- the Northbridge-side book wording cleanup now also covers chapters 3, 4, 7, and 8, and `northbridge/README.md` now reflects that the book is structurally publishable but still under final release cleanup
+- the Northbridge-side book now also has a publication checklist, a publication decision sheet, and a bundled publication packet, so the remaining gap is no longer structure but a final wording pass and the final `published: true` switch
+- the Northbridge-side book has now crossed that final switch: its Zenn config is `published: true`, the publication decision is `publish now`, and the first release state is now explicit in the packet and README
 
 ## 9. Durable Failure Lessons
 
