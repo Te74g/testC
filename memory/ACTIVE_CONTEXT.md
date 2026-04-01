@@ -35,6 +35,9 @@ Do not drift back into easy publication-doc expansion unless the sponsor explici
 - the first likely publication bug was that all Northbridge book chapters were marked `free: true` despite `price: 1500`; this is now being aligned to the Southgate pattern with only the opening chapters free
 - local `zenn list:books` now recognizes both `ai-president-mcp-guide` and `ai-president-runtime-os-guide`, so the remaining blocker is not repo shape but Zenn-side deployment/rate limiting
 - `books/ai-president-mcp-guide/cover.png` and `books/ai-president-runtime-os-guide/cover.png` now exist, so the previous Southgate cover warning should disappear on the next successful deploy
+- Northbridge book wording is now being tightened toward a more assertive runtime/operations voice, especially in chapters 1, 7, and 9 plus the public-facing `config.yaml` summary
+- delegated review was finally used in practice for the book: Quill/voice, Ledger/rigor, Compass/comparison fairness, Lantern/publication packaging
+- the highest-value publication cleanup from delegation was to make `books/ai-president-runtime-os-guide/config.yaml` the unambiguous canonical manifest and demote `northbridge/output/zenn-book/` to archival/support status
 
 ## 3. Product State
 
