@@ -1,0 +1,15 @@
+title: "Codex + Ollama + Runtimeで「AI社長組織」を止めない実践ガイド"
+summary: "Southgate Research が AI社長組織を立ち上げるなら、Northbridge Systems はそれを止めない。Codex、Ollama、ローカルLLM、scheduled supervisor、worker評価、Dream、evidence-first productization をまとめた運用ガイド。"
+topics: ["codex", "ollama", "llm", "ai", "mcp"]
+published: true
+price: 1500
+chapters:
+  - 01-why-ai-president-needs-runtime-os
+  - 02-northbridge-systems-overview
+  - 03-recurring-tick-supervisor
+  - 04-keep-local-llm-runtime-alive
+  - 05-evaluate-and-correct-workers
+  - 06-dream-and-memory-compaction
+  - 07-runtime-audit-studio
+  - 08-raising-autonomy-without-breaking-approval
+  - 09-why-codex-took-longer-than-claude

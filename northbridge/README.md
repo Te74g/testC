@@ -42,6 +42,7 @@ Current status:
 - structurally publishable
 - release manifest switched to publish state
 - current release posture: publish now
+- actual repo-root Zenn book path now exists under `books/ai-president-runtime-os-guide/`
 
 ## Release Pack
 

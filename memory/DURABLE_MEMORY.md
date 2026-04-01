@@ -110,6 +110,7 @@ Sponsor approval is mandatory for:
 - a Northbridge-side companion Zenn book scaffold now exists under `northbridge/output/zenn-book/`
 - the Northbridge-side book now has book config plus chapters 1 to 9, focused on runtime/operations rather than Southgate's organization/MCP angle, and it now explicitly records why Southgate/Claude reached publishable shape faster while Northbridge/Codex struggled with verification, runtime proof, and drift
 - the Northbridge-side book now also has a real Zenn `config.yaml`, so it is no longer only a design memo set; it now has an actual publication manifest with fixed chapter order
+- the Northbridge-side book is now also mirrored into the repo-root Zenn path `books/ai-president-runtime-os-guide/`, which matches the shape of the already-published Southgate book
 - the Northbridge-side book has started publish-quality wording cleanup, with chapters 1, 2, and 9 tightened to make the Southgate/Northbridge split and the Claude-vs-Codex comparison clearer
 - the Northbridge-side book wording cleanup now also covers chapters 3, 4, 7, and 8, and `northbridge/README.md` now reflects that the book is structurally publishable but still under final release cleanup
 - the Northbridge-side book now also has a publication checklist, a publication decision sheet, and a bundled publication packet, so the remaining gap is no longer structure but a final wording pass and the final `published: true` switch

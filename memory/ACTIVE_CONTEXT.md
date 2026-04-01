@@ -31,6 +31,7 @@ Do not drift back into easy publication-doc expansion unless the sponsor explici
 - the local-model-generated technical brief path still produces generic and structurally unreliable client copy
 - a deterministic runtime audit pack now exists and is more trustworthy than the current local-model-generated brief path
 - a new Northbridge-side book scaffold exists under `northbridge/output/zenn-book/`
+- the same Northbridge book now also exists under the real repo-root Zenn path `books/ai-president-runtime-os-guide/`
 
 ## 3. Product State
 
@@ -71,6 +72,7 @@ Do not drift back into easy publication-doc expansion unless the sponsor explici
   - `northbridge/output/zenn-book/08-raising-autonomy-without-breaking-approval.md`
   - `northbridge/output/zenn-book/09-why-codex-took-longer-than-claude.md`
   - current reality: companion book scaffold exists and now covers a complete chapter set from 1 to 9, including an explicit comparison chapter on why Southgate/Claude reached publishable shape faster while Northbridge/Codex had to grind through runtime proof, drift, and correction; a real Zenn `config.yaml` now exists and the chapter order is fixed for publication
+  - actual publish path now also exists under `books/ai-president-runtime-os-guide/` with `config.yaml` and chapters `01-09`
 
 ## 4. Workers
 
