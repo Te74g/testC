@@ -60,11 +60,27 @@ Do not drift back into easy publication-doc expansion unless the sponsor explici
   - `products/runtime-audit-studio/PROFILE_APPROVAL_SHEET_V1.md`
   - `products/runtime-audit-studio/OUTREACH_COPY_V1.md`
   - `products/runtime-audit-studio/MARKETPLACE_LISTING_DRAFT_V1.md`
+  - `products/runtime-audit-studio/MARKETPLACE_LISTING_APPROVAL_SHEET_V1.md`
+  - `products/runtime-audit-studio/PLATFORM_LISTING_VARIANTS_V1.md`
   - `products/runtime-audit-studio/FINAL_PUBLICATION_PACKET_V1.md`
   - `products/runtime-audit-studio/FINAL_PUBLIC_STACK_INDEX_V1.md`
+  - `products/runtime-audit-studio/FINAL_COMMERCIAL_PACKET_V1.md`
+  - `products/runtime-audit-studio/FIRST_COMMERCIAL_ACTION_SHEET_V1.md`
+  - `products/runtime-audit-studio/NEXT_PRODUCT_ROADMAP_V1.md`
   - `products/runtime-audit-studio/FIRST_RELEASE_DECISION_SHEET_V1.md`
   - `products/runtime-audit-studio/PUBLIC_RELEASE_SEQUENCE_PLAN_V1.md`
-  - current reality: strongest first sellable artifact because it is evidence-first and deterministic, and it now has offer/intake/quote packaging, sponsor-facing review and decision layers, a sharper public-summary draft with more explicit Northbridge voice, a publication gate for that summary, a short external profile draft, a publication gate for that profile, first-pass outreach wording, a marketplace-oriented listing draft, a bundled final publication packet, a simple public-stack index, a first-release decision layer, and a release-sequence note
+  - current reality: strongest first sellable artifact because it is evidence-first and deterministic, and it now has offer/intake/quote packaging, sponsor-facing review and decision layers, a sharper public-summary draft with more explicit Northbridge voice, a publication gate for that summary, a short external profile draft, a publication gate for that profile, first-pass outreach wording, a marketplace-oriented listing draft, a listing approval gate, platform-specific listing variants, a bundled final publication packet, a final commercial packet, a first commercial action sheet, a next-product roadmap, a simple public-stack index, a first-release decision layer, and a release-sequence note
+- worker patch ops path:
+  - `products/worker-patch-ops-studio/README.md`
+  - `products/worker-patch-ops-studio/OFFER_V1.md`
+  - `products/worker-patch-ops-studio/INTAKE_TEMPLATE_V1.md`
+  - `products/worker-patch-ops-studio/SPONSOR_REVIEW_PACK_V1.md`
+  - `products/worker-patch-ops-studio/FIRST_SPONSOR_DECISION_SHEET_V1.md`
+  - `products/worker-patch-ops-studio/PUBLIC_SUMMARY_V1.md`
+  - `products/worker-patch-ops-studio/PUBLIC_SUMMARY_APPROVAL_SHEET_V1.md`
+  - `products/worker-patch-ops-studio/PROFILE_DRAFT_V1.md`
+  - `products/worker-patch-ops-studio/PROFILE_APPROVAL_SHEET_V1.md`
+  - current reality: next incubated product, grounded in real evaluation and reversible patch tooling, now sponsor-decision-ready and equipped with summary and profile layers, but still intentionally below `Runtime Audit Studio` in commercial priority
 - Northbridge-side publishing path:
   - `northbridge/output/zenn-book/config.yaml`
   - `northbridge/output/zenn-book/00-book-config.md`
@@ -148,6 +164,7 @@ This compaction cycle exists because of that warning.
 - keep Runtime Audit Studio moving, but do not let it delay the first real Northbridge publication
 - get one real auto-recovery proof for Ollama instead of only healthy-path verification
 - decide whether the technical brief generator should be repaired further or kept internal-only for now
+- keep the next-product roadmap honest: `Worker Patch Ops Studio` next, `Technical Brief Studio` only after reviewer gates
 - only then return to deeper `.codex/src` reuse:
   - stronger Dream
   - stronger scheduler

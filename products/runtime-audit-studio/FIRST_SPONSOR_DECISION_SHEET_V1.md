@@ -78,6 +78,18 @@ Recommended overall position:
 - reason:
   - current strength is sponsor-reviewed commercial posture, not free publication
 
+### Decision 7: Next Product Activation
+
+- question:
+  - What should be the next product after `Runtime Audit Studio`?
+- recommended answer:
+  - incubate `Worker Patch Ops Studio`
+- hold back:
+  - `Technical Brief Studio` external sale
+  - automation implementation work
+- reason:
+  - worker patching can stay evidence-first, while the other paths still widen claims too early
+
 ## 4. Current Supporting Assets
 
 - product overview:
@@ -134,12 +146,18 @@ Decision 6:
 
 - keep publication gated / loosen boundary / defer
 
+Decision 7:
+
+- incubate worker patch ops / promote technical brief / jump to implementation / defer
+
 ## 7. Recommended Next Step After Decision
 
 If the answers mostly follow the recommended path:
 
 - create one public one-page summary for `Runtime Audit Studio`
+- use `NEXT_PRODUCT_ROADMAP_V1.md` as the expansion baseline
 
 If the answers differ materially:
 
 - revise the offer, quote posture, and product boundary before any external use
+- do not activate the next product until the failed gates are named explicitly

@@ -107,6 +107,15 @@ Sponsor approval is mandatory for:
 - `Runtime Audit Studio` now also has a first-release decision sheet, with summary as the recommended first public asset
 - `Runtime Audit Studio` now also has a public release sequence plan: summary first, profile second, outreach as supporting signal
 - `Runtime Audit Studio` now also has a marketplace-facing listing draft, making its sales surface less generic and more usable on platforms such as Upwork or Contra
+- `Runtime Audit Studio` now also has a marketplace-listing approval sheet, so its listing surface is not just draft copy but a sponsor-reviewable publication asset
+- `Runtime Audit Studio` now also has platform-specific listing variants, so its sales surface is no longer a single generic draft but usable Upwork/Contra/LinkedIn-oriented copy
+- `Runtime Audit Studio` now also has a final commercial packet, so pricing, intake, sponsor review, public copy, and marketplace copy can be reviewed as one bounded sales baseline
+- `Runtime Audit Studio` now also has a first commercial action sheet, so the project can choose one concrete outward move instead of drifting between summary, listing, and outreach
+- `Runtime Audit Studio` now also has a next-product roadmap; current durable sequencing is `Runtime Audit Studio` first, `Worker Patch Ops Studio` next, `Technical Brief Studio` only after reviewer gates
+- `Worker Patch Ops Studio` now exists as an explicit next-product packaging skeleton with README, offer, and intake template
+- `Worker Patch Ops Studio` now also has a sponsor review pack and a first sponsor decision sheet, so it is no longer just a packaging skeleton but a sponsor-decision-ready next product candidate
+- `Worker Patch Ops Studio` now also has a public summary and summary approval sheet, so the next product candidate now has a first bounded external explanation layer
+- `Worker Patch Ops Studio` now also has a profile draft and profile approval sheet, so the next product candidate can now be represented on marketplace/profile surfaces without dropping the sponsor gate
 - a Northbridge-side companion Zenn book scaffold now exists under `northbridge/output/zenn-book/`
 - the Northbridge-side book now has book config plus chapters 1 to 9, focused on runtime/operations rather than Southgate's organization/MCP angle, and it now explicitly records why Southgate/Claude reached publishable shape faster while Northbridge/Codex struggled with verification, runtime proof, and drift
 - the Northbridge-side book now also has a real Zenn `config.yaml`, so it is no longer only a design memo set; it now has an actual publication manifest with fixed chapter order
