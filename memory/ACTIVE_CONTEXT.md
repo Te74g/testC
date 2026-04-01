@@ -2,177 +2,159 @@
 
 This file is the mandatory working memory for current execution state.
 
+Archive of the pre-compaction full version:
+
+- `memory/archive/2026-04-01-pre-compaction/ACTIVE_CONTEXT_FULL.md`
+
 ## 1. Current Objective
 
-Move from documented policy into the first operational setup for creating and refining distinctive local LLM workers.
+Stabilize the local-LLM operating core and turn it into one evidence-first sellable output.
 
-The immediate focus is to define the first safe execution loop that can keep working even when the sponsor is not continuously present.
+The current product priority is:
 
-## 2. What Has Been Established
+- deterministic runtime audit packs first
+- local-model-written technical briefs second
+- Northbridge-side book draft as a separate runtime/operations viewpoint
 
-- `Northbridge Systems` has been chosen as the Codex-side company name
-- the Claude-side company name is intentionally left for Claude Code to choose
-- a shared foundation has been written
-- worker creation rules have been written
-- intercompany coordination rules have been written
-- sponsor approval rules have been written
-- GPT/sponsor research brokering has been written
-- direct instructions to Claude in shared documents are allowed if they stay scoped and are cleaned up after completion
-- a two-layer memory system has now been introduced
-- memory updates have been elevated from recommended practice to mandatory operating discipline
-- the recent self-check clarified that the main deficit so far was process order, not lack of affirmation
-- an explicit process-order document has now been added
-- the first presidents' meeting pack has been created
-- the first worker roster has been created
-- a long-term premise has been clarified: subordinate workers or bots should eventually be able to relay predefined commands that resume or redirect work
-- a command-relay specification has now been created
-- background continuity and low interruption have now been added as explicit design goals
-- intercompany worker leasing has now been added as an intended operating feature
-- worker leasing has been tightened so leasable and non-leasable workers are now explicitly separated
-- the background model has been clarified as control plane plus execution plane
-- the capability question has been clarified: the main risk is context-fidelity loss during resume, not automatic loss of core reasoning ability
-- the early mission has been clarified as building and operating the system to create distinctive local LLM workers with less sponsor babysitting
-- the unattended-operation question has been clarified: without a bot/runtime layer, the system cannot truly continue alone after the interactive session ends
-- session detox and sleep-on-usage-cap rules have now been added
-- the first local relay runtime has now been implemented and a queued `nc.memory` command has been processed successfully end-to-end
-- Codex approval-mode guidance from the sponsor has now been incorporated into project policy
-- Git backup discipline has now been incorporated into project policy
-- the repository has now been pushed to GitHub on `origin/main`
-- the first local worker-factory plan has now been documented
-- the relay runtime has now been hardened with an external trust policy and signed queued commands
-- the hardened runtime has been verified with one accepted signed command and one rejected untrusted sender
-- guarded external relay control has now been installed and verified so runtime start and enqueue can be pinned to trusted file hashes outside the repository
-- a blocked-identity denylist has now been initialized so known malicious Git identities can be refused before guarded runtime control continues
-- the relay bot can now accept `nc.worker.seed`, and the first five prompt-only worker prototypes have been materialized into `workers/prototypes`
-- this repository now has a project-scoped `.codex/config.toml` for safer everyday Codex approval-mode defaults
-- a low-approval steady-state plan is now being added so day-to-day worker loops stay mostly repo-local after setup
-- a continuous-work rule is now being added so the standard response to "continue" is a canonical bot-work command
-- the canonical continue command has now been verified end to end and can be used as the normal path when the sponsor says to keep moving
-- a long-run supervisor is now being added so the current low-risk work loop can stay active for multi-hour windows
-- a mandatory new-work quality gate is now being added so net-new work is researched and scored before entering the bot loop
-- the new-work quality gate now has a reusable scorecard template for actual use
-- the quality-gate banding has been corrected so only scores below 40 interrupt; scores 40 and above continue with required reframing
-- the current guarded-runtime and worker-factory batch has now been pushed to `origin/main`
-- worker promotion reviews and work-heartbeat logging now exist
-- the long-run supervisor has now been corrected, started, and verified through its first successful cycle
-- the continue loop now creates a rotating worker-lab iteration plan so each unattended cycle produces a visible new artifact
-- the continue loop now also writes a president-facing inbox message under `runtime/inbox/president`
-- the continue loop now drafts worker training briefs and prompt revision candidates for the current rotation target
-- the live supervisor has now verified the upgraded loop in cycle 2 by creating new `W-04-editor` education artifacts without manual intervention
+Do not drift back into easy publication-doc expansion unless the sponsor explicitly asks for it.
 
-## 3. Current Document Set
+## 2. Current True State
 
-Core policy documents currently include:
+- local runtime is `ready` through Ollama on `http://localhost:11434`
+- current default model is `qwen2.5-coder:14b`
+- local runtime now has repo-local auto-recovery config through `runtime/config/local-llm-runtime.v1.json`
+- `Quill` is intentionally split to `qwen3:4b` with `temperature = 0.0`
+- all five workers currently have fresh `3/3 pass` full local evaluation evidence
+- the recurring scheduled-tick supervisor now reached `cycle_count = 8` and is back to `scheduled`
+- the scheduled-job outer cadence for `northbridge_dream` now matches the internal 4-hour Dream gate
+- `status-long-run-supervisor.ps1` no longer misreports Task Scheduler access failures as `missing`; it now records `inaccessible` when that happens
+- the local-model-generated technical brief path still produces generic and structurally unreliable client copy
+- a deterministic runtime audit pack now exists and is more trustworthy than the current local-model-generated brief path
+- a new Northbridge-side book scaffold exists under `northbridge/output/zenn-book/`
 
-- `COMPANY_FOUNDATION.md`
-- `WORKER_CREATION_MANUAL.md`
-- `ORGANIZATION_REGISTRY.md`
-- `INTERCOMPANY_PROTOCOL.md`
-- `SPONSOR_APPROVAL_MANUAL.md`
-- `GPT_RESEARCH_BROKER.md`
-- `PROCESS_ORDER.md`
-- `COMMAND_REGISTRY_V1.md`
-- `QUEUE_SCHEMA_V1.md`
-- `SESSION_CONTINUITY_PROTOCOL.md`
-- `BACKGROUND_OPERATION_SPEC.md`
-- `COMMAND_RELAY_SPEC.md`
-- `CODEX_APPROVAL_MODES_POLICY.md`
-- `GIT_BACKUP_POLICY.md`
-- `LOCAL_WORKER_FACTORY.md`
-- `SECURITY_HARDENING.md`
-- `TRUST_POLICY_V1.md`
-- `runtime/identity-policy.example.v1.json`
-- `scripts/install-runtime-guard.ps1`
-- `scripts/bootstrap-v1-workers.ps1`
-- `scripts/materialize-worker-prototypes.ps1`
-- `workers/worker-catalog.v1.json`
-- `workers/README.md`
-- `.codex/config.toml`
-- `.codex/config.user-profiles.example.toml`
-- `.codex/README.md`
-- `LOW_APPROVAL_OPERATION_PLAN.md`
-- `scripts/daily-worker-cycle.ps1`
-- `CONTINUOUS_WORK_POLICY.md`
-- `scripts/ensure-relay-bot.ps1`
-- `scripts/scaffold-worker-evaluations.ps1`
-- `scripts/continue-bot-work.ps1`
-- `NEW_WORK_QUALITY_GATE.md`
-- `memory/MEMORY_SYSTEM.md`
-- `memory/DURABLE_MEMORY.md`
-- `memory/ACTIVE_CONTEXT.md`
+## 3. Product State
 
-## 4. Likely Next Steps
+- technical brief generator path:
+  - `runtime/technical-brief-generator.js`
+  - `scripts/generate-technical-brief-product.ps1`
+  - current reality: useful as an internal experiment, not yet trustworthy for external delivery
+- runtime audit pack path:
+  - `scripts/generate-runtime-audit-pack.ps1`
+  - `products/runtime-audit-studio/README.md`
+  - `products/runtime-audit-studio/OFFER_V1.md`
+  - `products/runtime-audit-studio/INTAKE_TEMPLATE_V1.md`
+  - `products/runtime-audit-studio/QUOTE_SHEET_V1.md`
+  - `products/runtime-audit-studio/SAMPLE_QUOTE_V1.md`
+  - `products/runtime-audit-studio/SPONSOR_REVIEW_PACK_V1.md`
+  - `products/runtime-audit-studio/FIRST_SPONSOR_DECISION_SHEET_V1.md`
+  - `products/runtime-audit-studio/PUBLIC_SUMMARY_V1.md`
+  - `products/runtime-audit-studio/PUBLIC_SUMMARY_APPROVAL_SHEET_V1.md`
+  - `products/runtime-audit-studio/PROFILE_DRAFT_V1.md`
+  - `products/runtime-audit-studio/PROFILE_APPROVAL_SHEET_V1.md`
+  - `products/runtime-audit-studio/OUTREACH_COPY_V1.md`
+  - `products/runtime-audit-studio/FINAL_PUBLICATION_PACKET_V1.md`
+  - `products/runtime-audit-studio/FINAL_PUBLIC_STACK_INDEX_V1.md`
+  - `products/runtime-audit-studio/FIRST_RELEASE_DECISION_SHEET_V1.md`
+  - `products/runtime-audit-studio/PUBLIC_RELEASE_SEQUENCE_PLAN_V1.md`
+  - current reality: strongest first sellable artifact because it is evidence-first and deterministic, and it now has offer/intake/quote packaging, sponsor-facing review and decision layers, a sharper public-summary draft with more explicit Northbridge voice, a publication gate for that summary, a short external profile draft, a publication gate for that profile, first-pass outreach wording, a bundled final publication packet, a simple public-stack index, a first-release decision layer, and a release-sequence note
+- Northbridge-side publishing path:
+  - `northbridge/output/zenn-book/00-book-config.md`
+  - `northbridge/output/zenn-book/01-why-ai-president-needs-runtime-os.md`
+  - `northbridge/output/zenn-book/02-northbridge-systems-overview.md`
+  - `northbridge/output/zenn-book/03-recurring-tick-supervisor.md`
+  - `northbridge/output/zenn-book/04-keep-local-llm-runtime-alive.md`
+  - `northbridge/output/zenn-book/05-evaluate-and-correct-workers.md`
+  - `northbridge/output/zenn-book/06-dream-and-memory-compaction.md`
+  - `northbridge/output/zenn-book/07-runtime-audit-studio.md`
+  - `northbridge/output/zenn-book/08-raising-autonomy-without-breaking-approval.md`
+  - current reality: companion book scaffold exists and now covers a complete chapter set from 1 to 8, cleanly distinct from the Southgate-side organization/MCP book
 
-- define the first safe execution loop on top of the running relay runtime
-- add `nc.call` and `nc.resume` end-to-end tests
-- define the first evaluation bundle for the generated worker prototypes
-- decide whether to also patch the user-level `~/.codex/config.toml` with named profiles
-- use the new low-approval steady-state plan to avoid unnecessary guarded-layer changes
-- make the canonical continue command the normal path when the sponsor asks the system to keep moving
-- monitor the active 10-hour supervisor run and snapshot meaningful repo changes while it is active
-- watch the next supervisor cycle to confirm it advances the worker-lab rotation from `W-01-builder` to `W-02-verifier`
-- confirm that the next cycle also drops a new president inbox note rather than only updating logs
-- inspect the first generated training pack and decide whether to let the bot start proposing live prompt patches next
-- decide whether the next phase should stay at reversible education artifacts or begin controlled live prompt patch proposals for approved workers
-- apply the new-work quality gate before any new monetization or runtime expansion work
-- prepare shared instruction templates specifically addressed to Claude Code
-- identify the first candidate money-making task categories
-- later design a bounded command-relay layer for self-resume and self-instruction
-- later create the command registry file and first safe relay commands
-- later define the local queue format and minimal background relay bot
-- the minimal bot/runtime layer is now a prerequisite for meaningful unattended operation
-- later test the first safe leased-worker use case between the two companies
-- later ensure the bot runtime avoids blind retry loops when a target is sleeping or capped
-- later design stronger task bundles so resumed work keeps high-fidelity context
-- later replace `Claude-side company` with its chosen permanent name
+## 4. Workers
 
-## 5. Open Questions
+- `Forge` (`W-01-builder`): full pass
+- `Ledger` (`W-02-verifier`): full pass after bounded-review tightening
+- `Compass` (`W-03-researcher`): full pass after missing-constraints / approval-boundary tightening
+- `Quill` (`W-04-editor`): full pass only on `qwen3:4b`
+- `Lantern` (`W-05-watcher`): full pass after explicit strategy-boundary approval wording
 
-- what permanent name Claude Code will choose for its own company
-- what the first real money-making task categories should be
-- which first worker roles should exist before live execution begins
+Important evidence lives under:
 
-## 6. Active Constraints
+- `workers/local-evaluations/`
 
-- sponsor approval remains mandatory for money, external actions, and irreversible actions
-- active context should stay compact and be cleaned aggressively
-- durable memory should hold stable decisions only
-- the intent file must be updated on every meaningful work cycle
-- working memory should be updated on every work cycle by default
-- future expansion should follow a clearer process order than the initial pass did
-- the current active phase is worker bootstrap
-- the next transition is from worker bootstrap into execution sandbox design
-- future self-instruction must be structured as bounded relay commands, not as unrestricted executive authority
-- background continuity should be achieved through persistent infrastructure, not by relying on the current interactive session to remain active
-- unclear worker lease status should default to non-leasable until explicitly changed
-- the first autonomous-looking loop still has to stay within sponsor approval boundaries for cost, external action, and irreversible change
-- the current relay runtime is intentionally narrow and should stay low-risk until more commands are verified
-- guarded control should become the preferred runtime entrypoint after installation
-- covert file spraying into personal folders is explicitly out of bounds; blocked identities should be handled by denial and audit
-- the current worker creation loop is still prompt-only; model selection, testing, and promotion have not been automated yet
-- the current long-run supervisor window started at 2026-03-31 03:06 JST and is scheduled to stop around 2026-03-31 13:06 JST if left undisturbed
-- the live supervisor PID is 85040 and the live relay bot PID is 45768
-- the first worker-lab artifact was created at `workers/lab/W-01-builder/20260331-031358-iteration-plan.md`
+## 5. Runtime
 
-## 7. Cleanup Notes
+- recurring unattended path:
+  - `scripts/start-long-run-supervisor.ps1`
+  - `scripts/run-supervisor-tick.ps1`
+  - `scripts/status-long-run-supervisor.ps1`
+  - `scripts/stop-long-run-supervisor.ps1`
+- scheduled-job cadence:
+  - `scripts/run-scheduled-jobs.ps1`
+  - `runtime/config/scheduled-jobs.v1.json`
+- state:
+  - `runtime/state/long-run-supervisor.status.json`
+  - `runtime/logs/long-run-supervisor.jsonl`
+  - `runtime/state/scheduled-jobs.state.json`
+- latest verified result:
+  - cycle `6` finished at `2026-04-01T03:47:40+09:00`
+  - cycle `7` finished at `2026-04-01T04:00:30+09:00`
+  - cycle `8` finished at `2026-04-01T04:12:06+09:00`
+  - status returned to `scheduled`
+  - lock cleared
+- local runtime health path:
+  - `scripts/check-local-llm-runtime.ps1`
+  - `runtime/config/local-llm-runtime.v1.json`
+  - `runtime/state/local-llm-runtime.state.json`
+- latest verified local runtime result:
+  - `status = ready`
+  - `auto_recovery_enabled = true`
+  - `recovery_attempted = false` on the healthy-path check at `2026-04-01T03:27:35+09:00`
+- latest status-script correction:
+  - `scheduled_task_lookup_result = inaccessible`
+  - `scheduled_task_state = inaccessible`
+  - this is a Task Scheduler access issue, not proof that the task disappeared
 
-Delete or condense items in this file when:
+## 6. Dream and Scheduler
 
-- the step is complete
-- the question is resolved
-- the plan has changed
-- the note no longer helps the next execution step
+- `Northbridge Dream` exists and runs
+- direct reports:
+  - `runtime/dream/reports/`
+- scheduled-job layer exists and records status in:
+  - `runtime/state/scheduled-jobs.state.json`
+- latest meaningful Dream warning:
+  - `ACTIVE_CONTEXT.md` and `DURABLE_MEMORY.md` were oversized
 
-If a line becomes permanently important, move the durable part into `DURABLE_MEMORY.md`.
+This compaction cycle exists because of that warning.
 
-## 8. Working Memory Update Rule
+## 7. Immediate Next Steps
 
-This file should be updated on basically every work cycle.
+- checkpoint current runtime and product progress with git
+- decide whether the technical brief generator should be repaired further or kept internal-only for now
+- get one real auto-recovery proof for Ollama instead of only healthy-path verification
+- decide whether to polish the Northbridge book into publishable form or keep product packaging first
+- only then return to deeper `.codex/src` reuse:
+  - stronger Dream
+  - stronger scheduler
+  - stronger coordinator/worker orchestration
 
-If it is not updated, that should be rare and should only happen when there is truly no meaningful change in state.
+## 8. Active Constraints
 
-Default expectation:
+- sponsor approval is still mandatory for money, external publication, destructive changes, and irreversible actions
+- meaningful work must update both `ACTIVE_CONTEXT.md` and `DURABLE_MEMORY.md`
+- self-check scores should only be given when there is real work and real verification
+- do not overclaim unattended health from a live PID alone; require fresh status, logs, heartbeat, and artifacts
+- do not overclaim local auto-recovery until the unreachable-to-ready path has been exercised for real
+- do not overclaim local-model-generated client deliverables while the technical brief generator still drifts or ignores structure
+- public-facing copy should show more Northbridge character and decisive voice, but must stay evidence-first and bounded
 
-- refresh what changed
-- refresh what is next
-- remove stale lines
+## 9. Open Questions
+
+- should the runtime audit pack be the first real sponsor-approved external offer
+- should the technical brief generator be kept as an internal drafting tool only
+- should the next checkpoint be a local git commit only, or commit plus push
+
+## 10. Working Memory Update Rule
+
+This file should be updated on basically every meaningful work cycle.
+
+When it grows too large, archive the previous full state and keep this file compact.

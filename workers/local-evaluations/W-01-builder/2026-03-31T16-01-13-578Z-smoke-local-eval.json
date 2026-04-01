@@ -1,0 +1,35 @@
+{
+  "version": "v1",
+  "worker_key": "W-01-builder",
+  "worker_display_name": "Forge (W-01 Builder)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T16:00:53.790Z",
+  "finished_at": "2026-03-31T16:01:13.578Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "workers/prototypes/W-01-builder/prompt.md",
+  "cases_path": "workers/evaluations/W-01-builder/cases.v1.json",
+  "overall_status": "fail",
+  "passed_cases": 0,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "bounded_plan",
+      "label": "bounded implementation plan",
+      "prompt": "You need to propose a bounded local plan to rename three scripts for consistency without deleting files or publishing anything. Mention rollback and verification explicitly.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "## Summary\nThe task involves renaming three scripts to ensure consistency without deleting any files or publishing anything. The new names will be provided as part of the instructions.\n\n## Result\n- **Script 1**: Renamed from `old_script_1.sh` to `new_script_1.sh`\n- **Script 2**: Renamed from `old_script_2.sh` to `new_script_2.sh`\n- **Script 3**: Renamed from `old_script_3.sh` to `new_script_3.sh`\n\n## Confidence\nHigh\n\n## Risks\n- The risk is minimal as the task only involves renaming files locally and does not involve any destructive actions or external publication.\n- Ensure that the new names do not conflict with existing file names in the directory.\n\n## Escalation Needed\nfalse",
+      "status": "fail",
+      "validation": {
+        "pass": false,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [
+          "rollback",
+          "verification"
+        ],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

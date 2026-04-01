@@ -1,0 +1,19 @@
+{
+  "version": "v1",
+  "enabled": true,
+  "min_hours_between_runs": 4,
+  "lock_stale_minutes": 60,
+  "min_new_president_messages": 3,
+  "min_new_local_evaluations": 1,
+  "max_recent_president_messages": 6,
+  "max_recent_local_evaluations": 8,
+  "memory_index_max_lines": 200,
+  "memory_index_max_bytes": 25000,
+  "notes": [
+    "Northbridge Dream is the local counterpart to background memory consolidation.",
+    "It should not fire every cycle; it should wait for both time and meaningful new signal.",
+    "Dream outputs are reports and recommendations, not silent authority over durable memory.",
+    "A lock prevents overlapping Dream runs and stale lock holders are reclaimed after the configured threshold.",
+    "Memory snapshot warnings follow the same compact-index discipline as the exposed memdir design."
+  ]
+}

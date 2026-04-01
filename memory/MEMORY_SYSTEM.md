@@ -79,7 +79,7 @@ If active context becomes crowded:
 
 `Northbridge Systems` maintains the memory system structure.
 
-The `Claude-side company` may read, propose edits, and use the same memory rules.
+The `Southgate Research` may read, propose edits, and use the same memory rules.
 
 The sponsor remains the final authority on any decision that affects budget, power, or irreversible action.
 

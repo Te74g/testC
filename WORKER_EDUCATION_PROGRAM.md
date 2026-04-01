@@ -8,12 +8,13 @@ The immediate aim is to improve worker prompts through structured training artif
 
 ## 2. Education Principle
 
-Worker education should happen in four layers:
+Worker education should happen in five layers:
 
 1. baseline prompt
 2. lab iteration plan
 3. training brief
 4. prompt revision candidate
+5. prompt patch proposal
 
 This keeps education reversible and auditable.
 
@@ -47,6 +48,7 @@ Each unattended cycle should be able to create:
 - one new worker-lab plan
 - one training brief
 - one prompt revision candidate
+- one prompt patch proposal
 - one president-facing summary
 
 ## 6. Promotion Rule

@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-This document defines how `Northbridge Systems` and the `Claude-side company` interact.
+This document defines how `Northbridge Systems` and the `Southgate Research` interact.
 
 The protocol is designed to support cooperation, healthy peer review, and efficient escalation without turning meetings into uncontrolled chatter.
 
@@ -29,6 +29,7 @@ Use it for:
 - peer review requests
 - proposed worker reassignment
 - concerns about quality or governance
+- reconfirmation of recorded structure or agreement when fresh live confirmation is missing
 
 Required fields:
 
@@ -82,7 +83,7 @@ Use a `joint_execution_request` when both companies are needed on one task.
 Recommended split:
 
 - `Northbridge Systems`: implementation, enforcement, verification
-- `Claude-side company`: research, critique, decision framing
+- `Southgate Research`: research, critique, decision framing
 
 Every joint execution request must specify:
 

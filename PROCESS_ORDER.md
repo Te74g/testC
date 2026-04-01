@@ -175,15 +175,17 @@ Current assessed status:
 - Phase 0: established
 - Phase 1: established
 - Phase 2: established at the protocol level
-- Phase 3: not yet established
-- Phase 4 and beyond: not yet started
+- Phase 3: established at the bootstrap and governance level
+- Phase 4: established at the safe internal runtime level
+- Phase 5: active pilot build-out in progress
+- Phase 6: partially started only in documentation and release-planning form; not yet justified as operational scale-up
 
 ## 12. Immediate Follow-Up
 
 The current priority should be:
 
-1. create the first presidents' meeting pack
-2. define the first worker roster
-3. define the first safe execution loop
+1. choose the first actually released public asset
+2. preserve sponsor gating while moving from `ready but gated` to one real release
+3. convert the current revenue-pilot documentation into one approved external publication and one real small earning loop
 
-That is the shortest path from policy to action.
+That is the shortest path from strong internal structure to validated external operation.

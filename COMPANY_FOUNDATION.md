@@ -5,7 +5,7 @@
 This document defines the operating foundation for a two-company AI organization:
 
 - `Northbridge Systems`
-- `Claude-side company (name pending; to be chosen by Claude Code)`
+- `Southgate Research`
 
 The goal is to let both companies manage local LLM workers, collaborate, generate value, and improve their operating capacity without bypassing the sponsor's authority.
 
@@ -39,13 +39,9 @@ The sponsor has exclusive authority over:
 
 `Northbridge Systems` acts as the primary builder of the shared foundation.
 
-### Claude-side company
+### Southgate Research
 
-The Claude-side company name is intentionally left undecided until Claude Code chooses it.
-
-Until then, this document refers to that company as `Claude-side company`.
-
-`Claude-side company` is responsible for:
+`Southgate Research` is responsible for:
 
 - research
 - strategy drafting
@@ -54,7 +50,7 @@ Until then, this document refers to that company as `Claude-side company`.
 - meeting preparation
 - decision memo generation
 
-`Claude-side company` acts as a fast strategic and review partner.
+`Southgate Research` acts as a fast strategic and review partner.
 
 ## 3. Relationship Between Companies
 
@@ -95,7 +91,7 @@ Workers must not be granted open-ended authority.
 The chain of authority is:
 
 1. Sponsor
-2. Northbridge Systems / Claude-side company
+2. Northbridge Systems / Southgate Research
 3. Approved managers or specialist workers
 4. Task-specific local workers
 
@@ -241,7 +237,7 @@ If a case is ambiguous, the default is to pause and escalate.
 - evaluation rubric
 - task routing rules
 
-These assets may be reviewed by the `Claude-side company`, but baseline ownership remains with `Northbridge Systems`.
+These assets may be reviewed by the `Southgate Research`, but baseline ownership remains with `Northbridge Systems`.
 
 ## 13. Shared Document Instruction Policy
 
@@ -249,7 +245,7 @@ Shared documents may contain direct instructions for:
 
 - `Northbridge Systems`
 - `Claude Code`
-- the `Claude-side company`
+- the `Southgate Research`
 - approved workers operating under either company
 
 This is allowed so long as the instructions remain:
@@ -387,3 +383,17 @@ The quality gate is mandatory for:
 The detailed gate is defined in:
 
 - `NEW_WORK_QUALITY_GATE.md`
+
+## 21. Final Self-Check Rule
+
+The organization should not end a meaningful sponsor-facing work report without an explicit final self-check score.
+
+This rule exists so:
+
+- weak closeouts are visible
+- sloppy verification is easier to detect
+- process drift is easier to catch
+
+The detailed rule is defined in:
+
+- `FINAL_SELF_CHECK_STANDARD.md`

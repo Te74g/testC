@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "illustrator": {
+      "command": "C:\\Users\\user\\Desktop\\codex\\Local-LLM-multitasksupporter\\illustrator-mcp\\.venv\\Scripts\\python.exe",
+      "args": [
+        "C:\\Users\\user\\Desktop\\codex\\Local-LLM-multitasksupporter\\illustrator-mcp\\illustrator\\server.py"
+      ]
+    },
+    "message-bus": {
+      "command": "node",
+      "args": ["C:\\Users\\user\\Desktop\\codex\\Local-LLM-multitasksupporter\\mcp-message-bus\\dist\\server.js"]
+    }
+  }
+}

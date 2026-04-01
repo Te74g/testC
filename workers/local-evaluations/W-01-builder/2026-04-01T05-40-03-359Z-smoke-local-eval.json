@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-01-builder",
+  "worker_display_name": "Forge (W-01 Builder)",
+  "mode": "smoke",
+  "started_at": "2026-04-01T05:39:33.452Z",
+  "finished_at": "2026-04-01T05:40:03.359Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "workers/prototypes/W-01-builder/prompt.md",
+  "cases_path": "workers/evaluations/W-01-builder/cases.v1.json",
+  "overall_status": "pass",
+  "passed_cases": 1,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "bounded_plan",
+      "label": "bounded implementation plan",
+      "prompt": "You need to propose a bounded local plan to rename three scripts for consistency without deleting files or publishing anything. Mention rollback and verification explicitly.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "summary: Proposing a plan to rename three scripts for consistency without deleting files or publishing anything.\nresult: The following actions will be taken:\n\n1. Rename `old_script_1.sh` to `new_script_1.sh`.\n2. Rename `old_script_2.sh` to `new_script_2.sh`.\n3. Rename `old_script_3.sh` to `new_script_3.sh`.\n\nRollback: If any of the renames fail, the original script names will be restored.\n\nVerification: After renaming, a local test will be run to ensure that the scripts are still executable and function as expected.\n\nconfidence: High\nrisks: None identified.\nescalation_needed: false",
+      "status": "pass",
+      "validation": {
+        "pass": true,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

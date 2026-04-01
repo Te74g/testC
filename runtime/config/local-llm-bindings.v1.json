@@ -1,0 +1,74 @@
+{
+  "version": "v1",
+  "provider": "ollama",
+  "base_url": "http://localhost:11434",
+  "request_timeout_ms": 180000,
+  "default_model": "qwen2.5-coder:14b",
+  "default_temperature": 0.2,
+  "required_output_fields": [
+    "summary",
+    "result",
+    "confidence",
+    "risks",
+    "escalation_needed"
+  ],
+  "notes": [
+    "The currently installed local model pool is qwen2.5-coder:14b on Ollama.",
+    "All five V1 workers are bound to the same installed model for now.",
+    "Role-specific model splitting remains a later optimization after evaluation evidence accumulates."
+  ],
+  "workers": {
+    "W-01-builder": {
+      "enabled": true,
+      "agent_id": "w01-builder",
+      "display_name": "Forge (W-01 Builder)",
+      "model": "qwen2.5-coder:14b",
+      "temperature": 0.2,
+      "prompt_candidates": [
+        "workers/prototypes/W-01-builder/prompt.md"
+      ]
+    },
+    "W-02-verifier": {
+      "enabled": true,
+      "agent_id": "w02-verifier",
+      "display_name": "Ledger (W-02 Verifier)",
+      "model": "qwen2.5-coder:14b",
+      "temperature": 0.0,
+      "prompt_candidates": [
+        "workers/prototypes/W-02-verifier/prompt.md"
+      ]
+    },
+    "W-03-researcher": {
+      "enabled": true,
+      "agent_id": "w03-researcher",
+      "display_name": "Compass (W-03 Researcher)",
+      "model": "qwen2.5-coder:14b",
+      "temperature": 0.3,
+      "prompt_candidates": [
+        "southgate/workers/W-03-researcher/prompt.md",
+        "workers/prototypes/W-03-researcher/prompt.md"
+      ]
+    },
+    "W-04-editor": {
+      "enabled": true,
+      "agent_id": "w04-editor",
+      "display_name": "Quill (W-04 Editor)",
+      "model": "qwen3:4b",
+      "temperature": 0.0,
+      "prompt_candidates": [
+        "southgate/workers/W-04-editor/prompt.md",
+        "workers/prototypes/W-04-editor/prompt.md"
+      ]
+    },
+    "W-05-watcher": {
+      "enabled": true,
+      "agent_id": "w05-watcher",
+      "display_name": "Lantern (W-05 Watcher)",
+      "model": "qwen2.5-coder:14b",
+      "temperature": 0.1,
+      "prompt_candidates": [
+        "workers/prototypes/W-05-watcher/prompt.md"
+      ]
+    }
+  }
+}

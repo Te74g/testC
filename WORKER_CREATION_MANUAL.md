@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-This manual defines how to create local LLM workers under `Northbridge Systems` and the `Claude-side company`.
+This manual defines how to create local LLM workers under `Northbridge Systems` and the `Southgate Research`.
 
 The objective is not to create "free" autonomous agents. The objective is to create bounded, useful workers with clear roles and safe escalation paths.
 
@@ -270,7 +270,7 @@ The sponsor decides.
 
 ## 13. Cleanup Requirement for Shared Documentation
 
-Workers and companies may write temporary instructions into shared documents, including instructions aimed at Claude Code or the Claude-side company.
+Workers and companies may write temporary instructions into shared documents, including instructions aimed at Claude Code or the Southgate Research.
 
 However, once the relevant task is complete, unnecessary temporary material must be removed.
 

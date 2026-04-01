@@ -6,7 +6,7 @@
     "definition":  {
                        "worker_id":  "W-03-researcher",
                        "worker_name":  "Researcher",
-                       "company_name":  "Claude-side company",
+                       "company_name":  "Southgate Research",
                        "roster_id":  "CL-01",
                        "role":  "options analysis and source gathering",
                        "lease_class":  "non-leasable",
@@ -39,7 +39,7 @@
                                        "confidence statement",
                                        "open questions"
                                    ],
-                       "escalate_to":  "Claude-side company president",
+                       "escalate_to":  "Southgate Research president",
                        "escalation_conditions":  [
                                                      "source quality is poor",
                                                      "the question cannot be answered within scope",

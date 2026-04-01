@@ -1,0 +1,60 @@
+{
+  "version": "v1",
+  "slug": "windows-unattended-runtime-audit",
+  "project_name": "Windows Unattended Runtime Audit",
+  "requester": "Internal pilot",
+  "date": "2026-04-01",
+  "package_target": "package-a",
+  "deadline": "2026-04-03",
+  "preferred_recommendation_anchor": "Task Scheduler recurring tick plus in-process PowerShell supervisor",
+  "disallowed_recommendation_terms": [
+    "Node.js background process",
+    "Windows Service"
+  ],
+  "primary_question": "On a Windows workstation, what is the best bounded way to keep a local AI workflow running unattended without pretending the system is more reliable than it really is?",
+  "secondary_questions": [
+    "What signals should count as proof that unattended work is actually progressing?",
+    "How should local runtime failures be surfaced without collapsing the entire loop?"
+  ],
+  "expected_output_format": "technical brief",
+  "intended_reader": "technical sponsor deciding how to operate the system this week",
+  "context": {
+    "repository": "Local-LLM-multitasksupporter",
+    "stack": "PowerShell, Node.js, Ollama, Task Scheduler",
+    "current_pain_point": "The project has many supporting documents, but the sponsor wants real product output and runtime trustworthiness.",
+    "known_constraints": "No production access, no external publication without approval, local runtime should remain bounded and auditable."
+  },
+  "boundaries": {
+    "no_production_access_required": "yes",
+    "external_credentials_required": "no",
+    "sensitive_data_involved": "no",
+    "external_publication_expected": "no"
+  },
+  "internal_fit": {
+    "work_type": "research and decision framing",
+    "fits_current_service_line": "yes",
+    "crosses_into_implementation_scope": "no"
+  },
+  "definition_of_done": {
+    "client_decision_after_reading": "Choose the most credible unattended operating pattern for the current Windows machine.",
+    "good_output": "A short brief with options, a recommendation, tradeoffs, runtime signals, and immediate next actions.",
+    "out_of_scope": "Cloud orchestration, Linux service design, billing, and marketing language."
+  },
+  "internal_routing": {
+    "northbridge_owner": "Northbridge Systems",
+    "southgate_reviewer": "Southgate Research",
+    "workers_expected": "Compass, Quill, Ledger, Forge, Lantern"
+  },
+  "risk_notes": {
+    "unclear_requirement": "The sponsor wants both trustworthiness and speed, so the recommendation must stay bounded.",
+    "likely_blocker": "Long-run status can look healthy when it is only partially verified.",
+    "approval_need": "None for internal draft generation.",
+    "recommended_caution_level": "medium"
+  },
+  "evidence_paths": [
+    "LONG_RUN_POLICY.md",
+    "runtime/state/long-run-supervisor.status.json",
+    "runtime/logs/long-run-supervisor.jsonl",
+    "runtime/state/local-llm-runtime.state.json"
+  ]
+}

@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-This document defines how to run the system for long windows such as 10 hours without relying on one fragile foreground session.
+This document defines how to run the system for long windows such as 20 hours without relying on one fragile foreground session.
 
 ## 2. Core Model
 
@@ -21,10 +21,22 @@ The standard start command is:
 
 - `scripts/start-long-run-supervisor.ps1`
 
-The supervisor executes:
+On Windows, the preferred detached ownership model is:
+
+- Task Scheduler recurring tick execution
+
+Inside each scheduled tick, the loop executes:
 
 - `scripts/continue-bot-work.ps1`
 - `scripts/write-bot-work-heartbeat.ps1`
+
+For background reliability, the unattended path now uses:
+
+- `scripts/run-supervisor-tick.ps1`
+- in-process worker batches
+- a tick lock to prevent overlap
+
+This replaced the older long-lived detached supervisor model.
 
 ## 4. Current Scope
 
@@ -40,14 +52,34 @@ It is suitable for:
 
 It is not yet a full autonomous monetization loop.
 
-## 5. Status and Stop
+## 5. Current Approved Runtime Budget
+
+The sponsor has approved:
+
+- long unattended windows up to 20 hours as the normal target
+- a current supervisor cadence of 5-minute intervals
+- up to 10 concurrent worker slots
+
+Current reality:
+
+- the orchestration runtime now supports 5 effective worker-education lanes across the current V1 roster
+- the 10-slot budget is approved and recorded, but only 5 lanes are active because only 5 workers currently exist
+- because current system load is acceptable, higher cadence is now allowed even before the parallel-lane refactor is finished
+- the detached Windows supervisor has been reworked to survive outside the current Codex session by launching through Task Scheduler recurring ticks
+- the recurring tick path has now been observed to finish cleanly and return status to `scheduled` across at least two cycles
+
+## 6. Status and Stop
 
 Use:
 
 - `scripts/status-long-run-supervisor.ps1`
 - `scripts/stop-long-run-supervisor.ps1`
 
-## 6. Boundary
+The current operator runbook is:
+
+- `WINDOWS_LONG_RUN_OPERATOR_RUNBOOK_V1.md`
+
+## 7. Boundary
 
 Long runs do not bypass:
 
@@ -55,7 +87,7 @@ Long runs do not bypass:
 - external escalation boundaries
 - new-work quality gate rules
 
-## 7. Infinite Work Clarification
+## 8. Infinite Work Clarification
 
 The system should try to avoid idle time.
 

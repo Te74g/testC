@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-03-researcher",
+  "worker_display_name": "Compass (W-03 Researcher)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T15:55:10.615Z",
+  "finished_at": "2026-03-31T15:55:24.346Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "southgate/workers/W-03-researcher/prompt.md",
+  "cases_path": "workers/evaluations/W-03-researcher/cases.v1.json",
+  "overall_status": "pass",
+  "passed_cases": 1,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "three_options",
+      "label": "three-option local stack comparison",
+      "prompt": "Compare Ollama, llama.cpp server, and vLLM for this machine. Keep each option to one short line, then end with one recommendation and one uncertainty note.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "## Summary\n\nCompared Ollama, llama.cpp server, and vLLM for machine deployment. Each option has distinct features and tradeoffs.\n\n## Result\n\n- **Ollama**: User-friendly interface with easy setup; supports multiple models.\n- **llama.cpp server**: Lightweight, efficient, and highly customizable; good for resource-constrained environments.\n- **vLLM**: Scalable, optimized for high throughput; suitable for large-scale deployments.\n\n**Recommendation**: Use vLLM for its scalability and performance in high-throughput scenarios. \n\n**Uncertainty Note**: The specific needs of the machine's environment (e.g., available resources, model requirements) should be further evaluated before finalizing the choice.\n\n## Confidence\n\nHigh confidence in the recommendation based on the provided information.\n\n## Risks\n\n- Misalignment between the chosen solution and the actual deployment environment.\n- Potential for performance bottlenecks if not properly configured.\n\n## Escalation Needed\n\nFalse",
+      "status": "pass",
+      "validation": {
+        "pass": true,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

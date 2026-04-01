@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>車窓風景 Canvas版 — Southgate Research</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: sans-serif;
+    color: #ccc;
+  }
+  canvas {
+    border-radius: 20px;
+    box-shadow: 0 0 60px rgba(0,0,0,0.8);
+  }
+  .controls {
+    margin-top: 16px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  button {
+    padding: 8px 20px;
+    border: 1px solid #555;
+    border-radius: 6px;
+    background: #222;
+    color: #eee;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  button:hover { background: #333; }
+  button.recording { background: #c62828; border-color: #e53935; }
+  #status { font-size: 12px; color: #888; }
+  .label { margin-top: 8px; font-size: 11px; color: #555; }
+</style>
+</head>
+<body>
+
+<canvas id="scene" width="800" height="500"></canvas>
+<div class="controls">
+  <button id="btnSpeed" title="速度切替">速度: 普通</button>
+  <button id="btnTime" title="時間帯切替">昼</button>
+  <button id="btnRecord" title="WebM録画">録画開始</button>
+  <span id="status"></span>
+</div>
+<div class="label">車窓風景 Canvas版 — Southgate Research</div>
+
+<script>
+const canvas = document.getElementById("scene");
+const ctx = canvas.getContext("2d");
+const W = canvas.width;
+const H = canvas.height;
+
+// ─── State ────────────────────────────────────
+let speed = 1;
+let timeMode = "day"; // day, sunset, night
+let t = 0;
+
+// ─── Color Palettes ──────────────────────────
+const palettes = {
+  day: {
+    sky: ["#87CEEB", "#B0E0FF", "#E8F4FD", "#FFF8E7"],
+    mountain: "#7986CB",
+    mountainFar: "#9FA8DA",
+    hill: "#66BB6A",
+    hillDark: "#4CAF50",
+    tree: "#4CAF50",
+    treeDark: "#388E3C",
+    trunk: "#5D4037",
+    building: "#78909C",
+    buildingWindow: "#E3F2FD",
+    ground: "#8BC34A",
+    groundDark: "#689F38",
+    pole: "#455A64",
+    cloud: "rgba(255,255,255,0.85)",
+    sun: "#FFF176",
+  },
+  sunset: {
+    sky: ["#FF8A65", "#FFB74D", "#FFE0B2", "#FFF3E0"],
+    mountain: "#5C6BC0",
+    mountainFar: "#7986CB",
+    hill: "#558B2F",
+    hillDark: "#33691E",
+    tree: "#33691E",
+    treeDark: "#1B5E20",
+    trunk: "#3E2723",
+    building: "#546E7A",
+    buildingWindow: "#FFE082",
+    ground: "#689F38",
+    groundDark: "#33691E",
+    pole: "#37474F",
+    cloud: "rgba(255,183,77,0.7)",
+    sun: "#FF7043",
+  },
+  night: {
+    sky: ["#1A237E", "#283593", "#303F9F", "#3949AB"],
+    mountain: "#1A237E",
+    mountainFar: "#283593",
+    hill: "#2E7D32",
+    hillDark: "#1B5E20",
+    tree: "#1B5E20",
+    treeDark: "#0D4F1C",
+    trunk: "#3E2723",
+    building: "#37474F",
+    buildingWindow: "#FFF176",
+    ground: "#33691E",
+    groundDark: "#1B5E20",
+    pole: "#263238",
+    cloud: "rgba(200,200,255,0.2)",
+    sun: null,
+  },
+};
+
+// ─── Procedural Elements ──────────────────────
+// Generate mountains once
+function genMountains(count, minH, maxH, segW) {
+  const pts = [];
+  for (let i = 0; i <= count; i++) {
+    pts.push({ x: i * segW, y: H * 0.45 + Math.random() * (maxH - minH) - maxH });
+  }
+  return pts;
+}
+const mountains1 = genMountains(30, 40, 120, 120);
+const mountains2 = genMountains(25, 30, 80, 140);
+
+// Generate trees/buildings
+function genMidground(count, spanW) {
+  const items = [];
+  for (let i = 0; i < count; i++) {
+    const x = (i / count) * spanW;
+    if (Math.random() < 0.15) {
+      items.push({ type: "building", x, w: 30 + Math.random() * 30, h: 40 + Math.random() * 50 });
+    } else {
+      items.push({ type: "tree", x, h: 30 + Math.random() * 40, w: 20 + Math.random() * 20 });
+    }
+  }
+  return items;
+}
+const midItems = genMidground(80, 4000);
+
+// Clouds
+function genClouds(count, spanW) {
+  return Array.from({ length: count }, () => ({
+    x: Math.random() * spanW,
+    y: 30 + Math.random() * 80,
+    w: 60 + Math.random() * 100,
+    h: 20 + Math.random() * 25,
+  }));
+}
+const clouds = genClouds(12, 3200);
+
+// Poles
+function genPoles(count, spanW) {
+  return Array.from({ length: count }, (_, i) => ({
+    x: (i / count) * spanW,
+  }));
+}
+const poles = genPoles(30, 3000);
+
+// ─── Drawing Functions ────────────────────────
+function drawSky(p) {
+  const grad = ctx.createLinearGradient(0, 0, 0, H * 0.7);
+  p.sky.forEach((c, i) => grad.addColorStop(i / (p.sky.length - 1), c));
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, 0, W, H);
+
+  if (p.sun) {
+    const sunY = timeMode === "sunset" ? H * 0.35 : H * 0.15;
+    ctx.beginPath();
+    ctx.arc(W * 0.75, sunY, 30, 0, Math.PI * 2);
+    ctx.fillStyle = p.sun;
+    ctx.fill();
+  }
+}
+
+function drawClouds(p, offset) {
+  ctx.fillStyle = p.cloud;
+  for (const c of clouds) {
+    const cx = ((c.x - offset * 0.02) % 1600 + 1600) % 1600;
+    ctx.beginPath();
+    ctx.ellipse(cx, c.y, c.w / 2, c.h / 2, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.ellipse(cx - c.w * 0.25, c.y - c.h * 0.3, c.w * 0.3, c.h * 0.4, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.ellipse(cx + c.w * 0.2, c.y - c.h * 0.25, c.w * 0.35, c.h * 0.35, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function drawMountains(pts, color, offset, scrollSpeed) {
+  ctx.fillStyle = color;
+  ctx.beginPath();
+  ctx.moveTo(0, H);
+  for (const p of pts) {
+    const sx = ((p.x - offset * scrollSpeed) % (pts.length * 120) + pts.length * 120) % (pts.length * 120);
+    ctx.lineTo(sx, p.y);
+  }
+  ctx.lineTo(W, H);
+  ctx.closePath();
+  ctx.fill();
+}
+
+function drawHills(p, offset) {
+  const hillY = H * 0.6;
+  for (let i = 0; i < 8; i++) {
+    const cx = ((i * 250 - offset * 0.15) % 2000 + 2000) % 2000;
+    ctx.fillStyle = i % 2 === 0 ? p.hill : p.hillDark;
+    ctx.beginPath();
+    ctx.ellipse(cx, hillY + 40, 160, 80, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+function drawMidground(p, offset) {
+  const baseY = H * 0.78;
+  for (const item of midItems) {
+    const sx = ((item.x - offset * 0.5) % 4000 + 4000) % 4000;
+    if (sx < -60 || sx > W + 60) continue;
+
+    if (item.type === "tree") {
+      // Trunk
+      ctx.fillStyle = p.trunk;
+      ctx.fillRect(sx - 3, baseY - item.h * 0.4, 6, item.h * 0.4);
+      // Canopy
+      ctx.fillStyle = Math.random() > 0.5 ? p.tree : p.treeDark;
+      ctx.beginPath();
+      ctx.ellipse(sx, baseY - item.h * 0.55, item.w / 2, item.h * 0.45, 0, 0, Math.PI * 2);
+      ctx.fill();
+    } else {
+      ctx.fillStyle = p.building;
+      ctx.fillRect(sx, baseY - item.h, item.w, item.h);
+      // Roof
+      ctx.fillStyle = "#455A64";
+      ctx.fillRect(sx - 2, baseY - item.h - 6, item.w + 4, 6);
+      // Windows
+      ctx.fillStyle = p.buildingWindow;
+      for (let wy = 10; wy < item.h - 10; wy += 18) {
+        for (let wx = 6; wx < item.w - 6; wx += 16) {
+          ctx.fillRect(sx + wx, baseY - item.h + wy, 8, 10);
+        }
+      }
+    }
+  }
+}
+
+function drawGround(p, offset) {
+  const gY = H * 0.78;
+  const grad = ctx.createLinearGradient(0, gY, 0, H);
+  grad.addColorStop(0, p.ground);
+  grad.addColorStop(0.4, p.groundDark);
+  grad.addColorStop(1, "#3E2723");
+  ctx.fillStyle = grad;
+  ctx.fillRect(0, gY, W, H - gY);
+
+  // Track lines
+  ctx.strokeStyle = "rgba(0,0,0,0.1)";
+  ctx.lineWidth = 1;
+  for (let i = 0; i < 20; i++) {
+    const lx = ((i * 100 - offset * 3) % 2000 + 2000) % 2000;
+    ctx.beginPath();
+    ctx.moveTo(lx, H * 0.88);
+    ctx.lineTo(lx + 2, H);
+    ctx.stroke();
+  }
+}
+
+function drawPoles(p, offset) {
+  for (const pole of poles) {
+    const sx = ((pole.x - offset * 2) % 3000 + 3000) % 3000;
+    if (sx < -20 || sx > W + 20) continue;
+
+    ctx.fillStyle = p.pole;
+    ctx.fillRect(sx - 2, H * 0.25, 4, H * 0.53);
+    // Cross arms
+    ctx.fillRect(sx - 14, H * 0.25, 28, 3);
+    ctx.fillRect(sx - 10, H * 0.28, 20, 2);
+  }
+
+  // Wire
+  ctx.strokeStyle = p.pole;
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, H * 0.26);
+  ctx.lineTo(W, H * 0.26);
+  ctx.stroke();
+}
+
+function drawWindowFrame() {
+  const fw = 14;
+  ctx.fillStyle = "#37474F";
+  // Borders
+  ctx.fillRect(0, 0, W, fw);
+  ctx.fillRect(0, H - fw, W, fw);
+  ctx.fillRect(0, 0, fw, H);
+  ctx.fillRect(W - fw, 0, fw, H);
+  // Center divider
+  ctx.fillRect(W / 2 - 2, 0, 4, H);
+
+  // Rounded corners (draw arcs over corners)
+  ctx.fillStyle = "#111";
+  const r = 20;
+  // Top-left
+  ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(r, 0); ctx.arcTo(0, 0, 0, r, r); ctx.closePath(); ctx.fill();
+  // Top-right
+  ctx.beginPath(); ctx.moveTo(W, 0); ctx.lineTo(W - r, 0); ctx.arcTo(W, 0, W, r, r); ctx.closePath(); ctx.fill();
+  // Bottom-left
+  ctx.beginPath(); ctx.moveTo(0, H); ctx.lineTo(r, H); ctx.arcTo(0, H, 0, H - r, r); ctx.closePath(); ctx.fill();
+  // Bottom-right
+  ctx.beginPath(); ctx.moveTo(W, H); ctx.lineTo(W - r, H); ctx.arcTo(W, H, W, H - r, r); ctx.closePath(); ctx.fill();
+
+  // Glass reflection
+  ctx.fillStyle = "rgba(255,255,255,0.04)";
+  ctx.beginPath();
+  ctx.moveTo(fw, fw);
+  ctx.lineTo(W * 0.6, fw);
+  ctx.lineTo(fw, H * 0.5);
+  ctx.closePath();
+  ctx.fill();
+}
+
+// ─── Main Loop ────────────────────────────────
+function frame() {
+  const p = palettes[timeMode];
+  t += speed * 2;
+
+  ctx.clearRect(0, 0, W, H);
+  drawSky(p);
+  drawClouds(p, t);
+  drawMountains(mountains2, p.mountainFar, t, 0.03);
+  drawMountains(mountains1, p.mountain, t, 0.05);
+  drawHills(p, t);
+  drawMidground(p, t);
+  drawGround(p, t);
+  drawPoles(p, t);
+  drawWindowFrame();
+
+  requestAnimationFrame(frame);
+}
+frame();
+
+// ─── Controls ─────────────────────────────────
+const btnSpeed = document.getElementById("btnSpeed");
+const btnTime = document.getElementById("btnTime");
+const btnRecord = document.getElementById("btnRecord");
+const status = document.getElementById("status");
+
+const speeds = [
+  { label: "遅い", val: 0.5 },
+  { label: "普通", val: 1 },
+  { label: "速い", val: 2 },
+  { label: "超速", val: 4 },
+];
+let speedIdx = 1;
+btnSpeed.onclick = () => {
+  speedIdx = (speedIdx + 1) % speeds.length;
+  speed = speeds[speedIdx].val;
+  btnSpeed.textContent = `速度: ${speeds[speedIdx].label}`;
+};
+
+const times = ["day", "sunset", "night"];
+const timeLabels = { day: "昼", sunset: "夕方", night: "夜" };
+let timeIdx = 0;
+btnTime.onclick = () => {
+  timeIdx = (timeIdx + 1) % times.length;
+  timeMode = times[timeIdx];
+  btnTime.textContent = timeLabels[timeMode];
+};
+
+// ─── Recording (WebM via MediaRecorder) ──────
+let mediaRecorder = null;
+let recordedChunks = [];
+
+btnRecord.onclick = () => {
+  if (mediaRecorder && mediaRecorder.state === "recording") {
+    mediaRecorder.stop();
+    btnRecord.textContent = "録画開始";
+    btnRecord.classList.remove("recording");
+    return;
+  }
+
+  recordedChunks = [];
+  const stream = canvas.captureStream(30);
+  mediaRecorder = new MediaRecorder(stream, { mimeType: "video/webm; codecs=vp9" });
+
+  mediaRecorder.ondataavailable = (e) => {
+    if (e.data.size > 0) recordedChunks.push(e.data);
+  };
+
+  mediaRecorder.onstop = () => {
+    const blob = new Blob(recordedChunks, { type: "video/webm" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `train-window-${timeMode}-${Date.now()}.webm`;
+    a.click();
+    URL.revokeObjectURL(url);
+    status.textContent = `録画完了 (${(blob.size / 1024 / 1024).toFixed(1)} MB)`;
+  };
+
+  mediaRecorder.start();
+  btnRecord.textContent = "録画停止";
+  btnRecord.classList.add("recording");
+  status.textContent = "録画中...";
+};
+</script>
+</body>
+</html>

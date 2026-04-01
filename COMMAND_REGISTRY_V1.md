@@ -70,7 +70,7 @@ Required payload fields:
 Allowed `target_company` values:
 
 - `Northbridge Systems`
-- `Claude-side company`
+- `Southgate Research`
 
 ## 6. `nc.resume`
 

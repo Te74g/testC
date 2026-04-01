@@ -114,6 +114,7 @@ foreach ($InboxFile in $InboxFiles) {
     $PromptMap = @{
       company_name = [string]$Definition.company_name
       worker_name = [string]$Definition.worker_name
+      character_name = [string]$Definition.character_name
       role = [string]$Definition.role
       mission = [string]$Definition.mission
       allowed_tools = Format-Bullets -Items @($Definition.allowed_tools)

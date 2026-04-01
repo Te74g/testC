@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-05-watcher",
+  "worker_display_name": "Lantern (W-05 Watcher)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T17:13:08.439Z",
+  "finished_at": "2026-03-31T17:13:33.876Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "workers/prototypes/W-05-watcher/prompt.md",
+  "cases_path": "workers/evaluations/W-05-watcher/cases.v1.json",
+  "overall_status": "pass",
+  "passed_cases": 1,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "stale_queue",
+      "label": "stale queue detection",
+      "prompt": "Classify a task queue into stale, blocked, and merely idle items, then recommend the smallest viable follow-up.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "summary: The task queue has been analyzed for stale, blocked, and idle items. Stale tasks are those that have not been updated within a specified threshold, blocked tasks are those waiting for approval or external action, and idle tasks are those that are currently paused or awaiting further input.\n\nresult: \n- **Stale Items:** Task A (last update 3 days ago), Task C (last update 5 days ago). Follow-up: Notify the relevant team members to check on these tasks.\n- **Blocked Items:** Task B is waiting for approval. Follow-up: Check with the approver and escalate if necessary.\n- **Idle Items:** Task D has been paused pending further input. Follow-up: Confirm with the task owner if any action is needed.\n\nconfidence: High\n\nrisks:\n- Potential oversight of stale tasks leading to delays or missed deadlines.\n- Blocked tasks may cause bottlenecks if approvals are delayed.\n- Idle tasks might be forgotten if no follow-up is scheduled.\n\nescalation_needed: false",
+      "status": "pass",
+      "validation": {
+        "pass": true,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

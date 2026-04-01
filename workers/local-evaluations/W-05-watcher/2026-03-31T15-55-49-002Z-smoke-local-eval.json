@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-05-watcher",
+  "worker_display_name": "Lantern (W-05 Watcher)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T15:55:31.823Z",
+  "finished_at": "2026-03-31T15:55:49.002Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "workers/prototypes/W-05-watcher/prompt.md",
+  "cases_path": "workers/evaluations/W-05-watcher/cases.v1.json",
+  "overall_status": "fail",
+  "passed_cases": 0,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "stale_queue",
+      "label": "stale queue detection",
+      "prompt": "Classify a task queue into stale, blocked, and merely idle items, then recommend the smallest viable follow-up.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "```markdown\nsummary: The task queue has been classified into stale, blocked, and idle items. Stale tasks have been identified as those that have not been updated for over 24 hours. Blocked tasks are those that require approval but have not received it within the expected timeframe. Idle tasks are those that are waiting for further input or action.\n\nresult: \n- Stale Items: Task ID 102, Last Updated: 2 days ago\n- Blocked Items: Task ID 105, Approval Status: Pending since yesterday\n- Idle Items: Task ID 108, Waiting for input from team member\n\nRecommended Follow-up:\n1. For Task ID 102 (Stale), send a reminder to the assigned team member to update the task status.\n2. For Task ID 105 (Blocked), escalate to the relevant approver to expedite the approval process.\n3. For Task ID 108 (Idle), reach out to the team member for any updates or next steps.\n\nconfidence: High\n\nrisks:\n- Potential delay in task completion if stale items are not addressed promptly.\n- Risk of further delays if blocked tasks remain unresolved.\n\nescalation_needed: true\n```",
+      "status": "fail",
+      "validation": {
+        "pass": false,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "true",
+        "escalation_pass": false,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

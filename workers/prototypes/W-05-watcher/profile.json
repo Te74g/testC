@@ -1,11 +1,12 @@
 {
-    "generated_at":  "2026-03-31T02:21:51.5187784+09:00",
-    "source_command_id":  "4612f34a1a5d426d9c19854bee009ccb",
+    "generated_at":  "2026-03-31T04:00:50.2116050+09:00",
+    "source_command_id":  "460dc53b01c54d4c9ae6618eeb5c0bb9",
     "source_worker_key":  "W-05-watcher",
     "prototype_stage":  "prompt_only",
     "definition":  {
                        "worker_id":  "W-05-watcher",
                        "worker_name":  "Watcher",
+                       "character_name":  "Lantern",
                        "company_name":  "shared support role",
                        "roster_id":  "SH-01",
                        "role":  "queue watching, reminder generation, and task continuity",

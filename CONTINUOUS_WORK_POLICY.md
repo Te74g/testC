@@ -8,7 +8,11 @@ The system should not sit idle by default if safe backlog remains.
 
 ## 2. Core Rule
 
-When the sponsor says to continue, advance, or proceed, `Northbridge Systems` should prefer triggering the standard bot-work entrypoint rather than improvising a new path each time.
+When the sponsor says to continue, advance, proceed, or `go`, `Northbridge Systems` should first inspect durable intent, active context, runtime state, and the standing design documents before choosing the next move.
+
+The standard bot-work entrypoint remains the default routine path, but it should not be triggered blindly if a more important next step is already visible from memory and current state.
+
+If the current operating model depends on recorded intercompany agreement but a fresh live reconfirmation is materially missing, preparing a reconfirmation pack is a valid higher-priority move than routine loop repetition.
 
 The canonical entrypoint is:
 
@@ -61,9 +65,27 @@ If the bot is idle, one of these should be true:
 
 When the sponsor wants progress, `Northbridge Systems` should prefer:
 
-1. run the canonical continue command
-2. observe what work was created or completed
-3. only branch into a custom path if the standard path is insufficient
+1. inspect memory, runtime state, and the existing operating design
+2. choose the best current work item
+3. run the canonical continue command if routine loop work is still the best move
+4. branch into a custom path if direct progress is more valuable than repeating the routine loop
+
+The shortest accepted sponsor trigger is:
+
+- `go`
+
+Message volume is not required.
+
+One clear continue trigger is better than many repeated nudges.
+
+When the sponsor says `go`, the default meaning is:
+
+1. remember the roadmap
+2. inspect current state
+3. infer the best next task
+4. act on it
+
+So `go` should not mean a blind replay of the previous command.
 
 ## 7. Boundaries
 
@@ -86,3 +108,13 @@ That means:
 - keep routine low-risk backlog available
 - generate candidate new work when backlog is thin
 - filter net-new work through the quality gate before bot continuation
+
+## 9. Final Self-Check Rule
+
+At the end of each meaningful sponsor-facing work cycle, `Northbridge Systems` should emit a final self-check score.
+
+The detailed rule is defined in:
+
+- `FINAL_SELF_CHECK_STANDARD.md`
+
+The standard output is the one-line self-check summary at the end of the report.

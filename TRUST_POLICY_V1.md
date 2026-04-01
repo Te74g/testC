@@ -44,7 +44,7 @@ The trust policy should define:
   "blocked_senders": [],
   "allowed_receivers": [
     "Northbridge Systems",
-    "Claude-side company",
+    "Southgate Research",
     "codex",
     "claude"
   ],

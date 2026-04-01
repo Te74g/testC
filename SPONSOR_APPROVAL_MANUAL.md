@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-This document defines how `Northbridge Systems` and the `Claude-side company` request sponsor approval.
+This document defines how `Northbridge Systems` and the `Southgate Research` request sponsor approval.
 
 The sponsor is the final authority for financial, external, destructive, and sensitive actions.
 

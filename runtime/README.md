@@ -13,6 +13,7 @@ This directory contains the local background relay runtime.
 - `inbox/`
 - `logs/`
 - `state/`
+- `config/`
 
 These directories are created automatically by the runtime scripts.
 
@@ -34,12 +35,18 @@ Use these scripts from the project root:
 - `scripts/scaffold-worker-promotion-reviews.ps1`
 - `scripts/advance-worker-lab.ps1`
 - `scripts/draft-worker-training-pack.ps1`
+- `scripts/draft-worker-patch-proposal.ps1`
+- `scripts/render-worker-prompt-preview.ps1`
+- `scripts/draft-worker-patch-approval-request.ps1`
+- `scripts/set-worker-patch-proposal-decision.ps1`
+- `scripts/apply-approved-worker-patch.ps1`
 - `scripts/continue-bot-work.ps1`
 - `scripts/write-bot-work-heartbeat.ps1`
 - `scripts/write-president-message.ps1`
 - `scripts/start-long-run-supervisor.ps1`
 - `scripts/status-long-run-supervisor.ps1`
 - `scripts/stop-long-run-supervisor.ps1`
+- `scripts/check-local-llm-runtime.ps1`
 
 ## Trust Policy
 
@@ -140,17 +147,84 @@ It also writes a short president-facing inbox message under `runtime/inbox/presi
 
 It now drafts a worker training pack as well, so each cycle can produce a training brief and a prompt revision candidate for the current worker target.
 
+It can also draft a reversible prompt patch proposal, so the next phase of worker education can prepare live prompt changes without applying them automatically.
+
+The patch flow now supports:
+
+- prompt patch proposal generation
+- patched prompt preview generation
+- patch approval request generation
+- explicit proposal decision updates
+- approval-gated live application
+
 Start a long run:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\start-long-run-supervisor.ps1 -Hours 10 -IntervalMinutes 15
 ```
 
+On Windows, this launcher now registers a recurring Task Scheduler tick so unattended work can continue after the current Codex shell returns.
+
+Inside each scheduled tick, the canonical continue loop runs in-process for reliability. The current unattended path processes the active worker roster as one multi-worker batch per cycle.
+
+The recurring tick path now uses:
+
+- `scripts/run-supervisor-tick.ps1`
+- `runtime/state/long-run-supervisor.status.json`
+- `runtime/state/long-run-supervisor.tick.lock`
+- `runtime/logs/long-run-supervisor.jsonl`
+
+The current verified behavior is:
+
+- the tick acquires a lock
+- runs one bounded cycle
+- writes heartbeat and president inbox output
+- records `supervisor_tick_ok`
+- returns the status to `scheduled`
+- clears the lock
+
+If Task Scheduler cannot be queried from the current shell, `status-long-run-supervisor.ps1` now records:
+
+- `scheduled_task_lookup_result = inaccessible`
+- `scheduled_task_state = inaccessible`
+
+instead of falsely claiming the scheduled task is missing.
+
+## Local LLM Runtime
+
+The local-model health path now uses:
+
+- `runtime/config/local-llm-bindings.v1.json`
+- `runtime/config/local-llm-runtime.v1.json`
+- `scripts/check-local-llm-runtime.ps1`
+- `runtime/state/local-llm-runtime.state.json`
+
+`check-local-llm-runtime.ps1` now does three things:
+
+- checks `GET /api/tags`
+- records explicit runtime state and model availability
+- if the endpoint is unreachable and auto-recovery is enabled, tries to launch `ollama.exe serve` from a known local path and re-checks the endpoint
+
+The runtime state now records:
+
+- `cli_resolution`
+- `auto_recovery_enabled`
+- `recovery_attempted`
+- `recovery_succeeded`
+- `recovery_completed_at`
+- `recovery_detail`
+
+This means the local runtime path is no longer just passive health reporting; it can attempt bounded self-recovery when Ollama is missing.
+
 Check long-run status:
 
 ```powershell
 powershell -ExecutionPolicy Bypass -File .\scripts\status-long-run-supervisor.ps1
 ```
+
+Operator reference:
+
+- `WINDOWS_LONG_RUN_OPERATOR_RUNBOOK_V1.md`
 
 Stop:
 

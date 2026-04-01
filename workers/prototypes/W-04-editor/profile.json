@@ -6,7 +6,7 @@
     "definition":  {
                        "worker_id":  "W-04-editor",
                        "worker_name":  "Editor",
-                       "company_name":  "Claude-side company",
+                       "company_name":  "Southgate Research",
                        "roster_id":  "CL-02",
                        "role":  "summarization, decision framing, and cleanup",
                        "lease_class":  "non-leasable",
@@ -38,7 +38,7 @@
                                        "action summary",
                                        "unresolved issues"
                                    ],
-                       "escalate_to":  "Claude-side company president",
+                       "escalate_to":  "Southgate Research president",
                        "escalation_conditions":  [
                                                      "intent is unclear",
                                                      "source material conflicts",

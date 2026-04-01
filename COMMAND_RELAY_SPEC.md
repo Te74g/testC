@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-This document defines the future command-relay layer for `Northbridge Systems` and the `Claude-side company`.
+This document defines the future command-relay layer for `Northbridge Systems` and the `Southgate Research`.
 
 The goal is to let the companies resume work, redirect work, or call each other through subordinate workers or bots without granting unrestricted self-authority.
 

@@ -1,11 +1,12 @@
 {
-    "generated_at":  "2026-03-31T02:21:51.4532416+09:00",
-    "source_command_id":  "a18fa54b3be741fd9e6b9a711748ac77",
+    "generated_at":  "2026-03-31T04:00:50.1942170+09:00",
+    "source_command_id":  "b817373f031b4b0db149c866d11ee317",
     "source_worker_key":  "W-02-verifier",
     "prototype_stage":  "prompt_only",
     "definition":  {
                        "worker_id":  "W-02-verifier",
                        "worker_name":  "Verifier",
+                       "character_name":  "Ledger",
                        "company_name":  "Northbridge Systems",
                        "roster_id":  "NS-02",
                        "role":  "testing, review, and contradiction finding",

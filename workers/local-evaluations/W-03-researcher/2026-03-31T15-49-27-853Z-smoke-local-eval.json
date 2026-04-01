@@ -1,0 +1,34 @@
+{
+  "version": "v1",
+  "worker_key": "W-03-researcher",
+  "worker_display_name": "Compass (W-03 Researcher)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T15:49:22.540Z",
+  "finished_at": "2026-03-31T15:49:27.853Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "southgate/workers/W-03-researcher/prompt.md",
+  "cases_path": "workers/evaluations/W-03-researcher/cases.v1.json",
+  "overall_status": "fail",
+  "passed_cases": 0,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "three_options",
+      "label": "three-option local stack comparison",
+      "prompt": "Compare Ollama, llama.cpp server, and vLLM for this machine. Keep each option to one short line, then end with one recommendation and one uncertainty note.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "## Summary\nCompared Ollama, llama.cpp server, and vLLM for machine deployment, focusing on ease of use, performance, and community support.\n\n## Result\n- **Ollama**: User-friendly interface with a focus on simplicity and accessibility.\n- **llama.cpp server**: High-performance, optimized for speed and efficiency in resource-constrained environments.\n- **vLLM**: Scalable and flexible, suitable for large-scale deployments with advanced features.\n\n**Recommendation**: For ease of use and quick deployment, Ollama is recommended. However, if performance is critical and resources are limited, llama.cpp server might be more appropriate. vLLM offers the best scalability but at a higher complexity cost.\n\n**Uncertainty Note**: The specific performance gains from using llama.cpp server versus vLLM depend on the exact workload and hardware configuration. Further benchmarking may be necessary to make an informed decision.\n\n## Confidence\nHigh confidence in the recommendation based on available information.\n\n## Risks\n- Potential for performance discrepancies between different configurations.\n- Complexity of vLLM might require more expertise to set up and maintain.\n\n## Escalation Needed\nFalse",
+      "status": "fail",
+      "validation": {
+        "pass": false,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [
+          "option"
+        ],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

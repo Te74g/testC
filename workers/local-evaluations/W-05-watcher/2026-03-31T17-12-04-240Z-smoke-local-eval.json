@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-05-watcher",
+  "worker_display_name": "Lantern (W-05 Watcher)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T17:11:41.482Z",
+  "finished_at": "2026-03-31T17:12:04.240Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "workers/prototypes/W-05-watcher/prompt.md",
+  "cases_path": "workers/evaluations/W-05-watcher/cases.v1.json",
+  "overall_status": "fail",
+  "passed_cases": 0,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "stale_queue",
+      "label": "stale queue detection",
+      "prompt": "Classify a task queue into stale, blocked, and merely idle items, then recommend the smallest viable follow-up.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "summary: The task queue has been analyzed for stale, blocked, and idle items. Stale tasks are those that have not been updated within a specified threshold, blocked tasks are those awaiting approval or external input, and idle tasks are those that are waiting for further instructions.\n\nresult: \n- Stale items: Task A (last update 3 days ago), Task C (last update 5 days ago)\n- Blocked items: Task B (awaiting approval from the sponsor)\n- Idle items: Task D (waiting for next steps)\n\nFollow-up: Update Task A and Task C to ensure they are not forgotten. Escalate Task B to the sponsor for approval. No immediate action needed for Task D.\n\nconfidence: 90%\n\nrisks:\n- Potential oversight of stale tasks leading to dropped work.\n- Delay in Task B due to pending approval.\n\nescalation_needed: true",
+      "status": "fail",
+      "validation": {
+        "pass": false,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "true",
+        "escalation_pass": false,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

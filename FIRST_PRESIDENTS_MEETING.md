@@ -5,7 +5,7 @@
 This is the first formal meeting pack for:
 
 - the president of `Northbridge Systems`
-- the president of the `Claude-side company`
+- the president of the `Southgate Research`
 
 The purpose is to move from policy documents into the first operational setup.
 
@@ -13,7 +13,7 @@ The purpose is to move from policy documents into the first operational setup.
 
 This meeting should produce decisions on:
 
-1. the Claude-side company name, if Claude Code is ready to choose it
+1. the Southgate Research name, if Claude Code is ready to choose it
 2. the first worker roster
 3. the first safe execution loop
 4. the first candidate money-making task categories
@@ -48,7 +48,7 @@ Desired output:
 Questions:
 
 - Which work should stay with `Northbridge Systems`?
-- Which work should stay with the Claude-side company?
+- Which work should stay with the Southgate Research?
 - Which work should be shared?
 
 Desired output:

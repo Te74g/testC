@@ -8,7 +8,7 @@
       ],
       "allowedReceiver": [
         "Northbridge Systems",
-        "Claude-side company"
+        "Southgate Research"
       ],
       "allowedPayloadValues": {
         "memory_target": [
@@ -32,12 +32,12 @@
       ],
       "allowedReceiver": [
         "Northbridge Systems",
-        "Claude-side company"
+        "Southgate Research"
       ],
       "allowedPayloadValues": {
         "target_company": [
           "Northbridge Systems",
-          "Claude-side company"
+          "Southgate Research"
         ]
       },
       "inbox": "call"
@@ -51,7 +51,7 @@
         "codex",
         "claude",
         "Northbridge Systems",
-        "Claude-side company"
+        "Southgate Research"
       ],
       "inbox": "resume"
     },
@@ -62,7 +62,7 @@
       ],
       "allowedReceiver": [
         "Northbridge Systems",
-        "Claude-side company"
+        "Southgate Research"
       ],
       "allowedPayloadValues": {
         "worker_key": [

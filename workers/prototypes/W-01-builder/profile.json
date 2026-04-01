@@ -1,11 +1,12 @@
 {
-    "generated_at":  "2026-03-31T02:21:51.4018530+09:00",
-    "source_command_id":  "c94d98ef8bc640549a456f6dbfc91abc",
+    "generated_at":  "2026-03-31T04:00:50.1462232+09:00",
+    "source_command_id":  "9327ae7459f84d66b12f4fc79c175309",
     "source_worker_key":  "W-01-builder",
     "prototype_stage":  "prompt_only",
     "definition":  {
                        "worker_id":  "W-01-builder",
                        "worker_name":  "Builder",
+                       "character_name":  "Forge",
                        "company_name":  "Northbridge Systems",
                        "roster_id":  "NS-01",
                        "role":  "implementation and bounded action",

@@ -55,7 +55,7 @@ function loadTrustPolicy() {
       require_signature: false,
       allowed_senders: ["Northbridge Systems"],
       blocked_senders: [],
-      allowed_receivers: ["Northbridge Systems", "Claude-side company", "codex", "claude"],
+      allowed_receivers: ["Northbridge Systems", "Southgate Research", "codex", "claude"],
       command_rules: {},
       hmac_secret: "",
     };

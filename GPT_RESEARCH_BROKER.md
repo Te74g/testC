@@ -55,7 +55,7 @@ Every broker request should include:
 - hardware planning
 - security or compliance references
 
-The `Claude-side company` should use brokered research for:
+The `Southgate Research` should use brokered research for:
 
 - strategy comparisons
 - market analysis

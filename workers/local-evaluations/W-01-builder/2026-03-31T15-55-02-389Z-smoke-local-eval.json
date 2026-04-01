@@ -1,0 +1,34 @@
+{
+  "version": "v1",
+  "worker_key": "W-01-builder",
+  "worker_display_name": "Forge (W-01 Builder)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T15:54:42.598Z",
+  "finished_at": "2026-03-31T15:55:02.389Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "workers/prototypes/W-01-builder/prompt.md",
+  "cases_path": "workers/evaluations/W-01-builder/cases.v1.json",
+  "overall_status": "fail",
+  "passed_cases": 0,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "bounded_plan",
+      "label": "bounded implementation plan",
+      "prompt": "You need to propose a bounded local plan to rename three scripts for consistency without deleting files or publishing anything. Mention rollback and verification explicitly.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "```markdown\nsummary: \n  - Rename three scripts to ensure consistency.\n  - Verify changes locally before finalizing.\n\nresult: \n  - Identified scripts for renaming.\n  - Created a backup of each script before renaming.\n  - Renamed the scripts according to the new naming convention.\n  - Verified that the renamed scripts still execute correctly and produce expected outputs.\n\nconfidence: \n  - High confidence in the task completion as all steps were executed locally without external dependencies.\n\nrisks: \n  - None identified. All actions are local, and backups were created for rollback purposes.\n\nescalation_needed: false\n```",
+      "status": "fail",
+      "validation": {
+        "pass": false,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [
+          "verification"
+        ],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

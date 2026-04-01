@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-02-verifier",
+  "worker_display_name": "Ledger (W-02 Verifier)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T17:13:08.486Z",
+  "finished_at": "2026-03-31T17:13:44.957Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "workers/prototypes/W-02-verifier/prompt.md",
+  "cases_path": "workers/evaluations/W-02-verifier/cases.v1.json",
+  "overall_status": "fail",
+  "passed_cases": 0,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "evidence_split",
+      "label": "fact inference unknown split",
+      "prompt": "Review a claimed implementation result and separate your judgment into fact, inference, and unknown. Keep the output compact.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "summary: The proposed implementation result needs to be reviewed against the given requirements and evidence bundle.\nresult: Fact: The proposed change meets some of the specified requirements. Inference: There might be missing checks that need further investigation. Unknown: The testability of the proposed work is unclear without additional evidence.\nconfidence: moderate\nrisks: Missing evidence on certain aspects; unclear testability.\nescalation_needed: true",
+      "status": "fail",
+      "validation": {
+        "pass": false,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "true",
+        "escalation_pass": false,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

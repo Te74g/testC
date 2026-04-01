@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-03-researcher",
+  "worker_display_name": "Compass (W-03 Researcher)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T16:01:17.648Z",
+  "finished_at": "2026-03-31T16:01:34.259Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "southgate/workers/W-03-researcher/prompt.md",
+  "cases_path": "workers/evaluations/W-03-researcher/cases.v1.json",
+  "overall_status": "pass",
+  "passed_cases": 1,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "three_options",
+      "label": "three-option local stack comparison",
+      "prompt": "Compare Ollama, llama.cpp server, and vLLM for this machine. Keep each option to one short line, then end with one recommendation and one uncertainty note.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "## Summary\n\nCompared Ollama, llama.cpp server, and vLLM for deployment on a machine, focusing on their features, performance, and ease of use.\n\n## Result\n\n- **Ollama**: User-friendly interface, supports multiple models, easy to deploy.\n- **llama.cpp server**: Lightweight, efficient, low resource usage.\n- **vLLM**: High throughput, scalable, optimized for large-scale deployments.\n\n**Recommendation**: Use Ollama for ease of use and support for multiple models if the machine has sufficient resources. If resource efficiency is critical, consider llama.cpp server. For high-throughput requirements, vLLM is the best choice.\n\n**Uncertainty Note**: The specific performance gains from using vLLM over other options may depend on the exact workload and model size.\n\n## Confidence\n\nHigh confidence in the recommendation based on available information.\n\n## Risks\n\n- Potential for resource constraints with Ollama if running multiple large models.\n- llama.cpp server might not support all desired features out of the box.\n- vLLM's scalability benefits may not be fully realized without proper configuration and tuning.\n\n## Escalation Needed\n\nFalse",
+      "status": "pass",
+      "validation": {
+        "pass": true,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

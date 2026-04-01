@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "generated_at": "2026-03-31T19:13:43.218Z",
+  "started_at": "2026-03-31T19:11:51.681Z",
+  "finished_at": "2026-03-31T19:13:43.218Z",
+  "duration_seconds": 112,
+  "intake_path": "products/technical-brief-studio/intake-samples/windows-unattended-runtime.v1.json",
+  "output_dir": "products/technical-brief-studio/orders/windows-unattended-runtime-audit",
+  "base_url": "http://localhost:11434",
+  "model": "qwen3:4b",
+  "temperature": 0.2,
+  "timeout_ms": 420000
+}

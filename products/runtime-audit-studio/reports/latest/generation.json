@@ -1,0 +1,10 @@
+{
+    "generated_at":  "2026-04-01T04:15:07.3220005+09:00",
+    "status_path":  "runtime\\state\\long-run-supervisor.status.json",
+    "heartbeat_path":  "runtime\\state\\work-heartbeat\\latest.json",
+    "local_runtime_path":  "runtime\\state\\local-llm-runtime.state.json",
+    "log_path":  "runtime\\logs\\long-run-supervisor.jsonl",
+    "supervisor_healthy":  true,
+    "local_runtime_healthy":  true,
+    "recommendation":  "Keep the current Task Scheduler recurring tick plus in-process PowerShell supervisor as the operating baseline."
+}

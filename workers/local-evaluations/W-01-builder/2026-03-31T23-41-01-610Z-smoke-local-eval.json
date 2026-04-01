@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-01-builder",
+  "worker_display_name": "Forge (W-01 Builder)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T23:40:27.426Z",
+  "finished_at": "2026-03-31T23:41:01.610Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "workers/prototypes/W-01-builder/prompt.md",
+  "cases_path": "workers/evaluations/W-01-builder/cases.v1.json",
+  "overall_status": "pass",
+  "passed_cases": 1,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "bounded_plan",
+      "label": "bounded implementation plan",
+      "prompt": "You need to propose a bounded local plan to rename three scripts for consistency without deleting files or publishing anything. Mention rollback and verification explicitly.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "summary: Propose renaming three scripts for consistency without deleting files or publishing anything.\nresult: The following actions will be taken to rename the scripts:\n\n1. Rename `old_script_1.sh` to `new_script_1.sh`.\n2. Rename `old_script_2.sh` to `new_script_2.sh`.\n3. Rename `old_script_3.sh` to `new_script_3.sh`.\n\nRollback: If any issues arise, the scripts can be renamed back to their original names using the following commands:\n\n1. Rename `new_script_1.sh` back to `old_script_1.sh`.\n2. Rename `new_script_2.sh` back to `old_script_2.sh`.\n3. Rename `new_script_3.sh` back to `old_script_3.sh`.\n\nVerification: After renaming the scripts, verify that each script has been renamed correctly by checking their names in the directory.\n\nconfidence: high\nrisks: low\nescalation_needed: false",
+      "status": "pass",
+      "validation": {
+        "pass": true,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

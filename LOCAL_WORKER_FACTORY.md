@@ -83,7 +83,7 @@ This gives five clearly different personalities and work styles.
 ### W-03 Researcher
 
 - role: options analysis and source gathering
-- company fit: `Claude-side company`
+- company fit: `Southgate Research`
 - personality: curious, comparative, uncertainty-aware
 - strength: surfaces alternatives and missing information
 - weakness: can stay exploratory too long
@@ -95,7 +95,7 @@ This gives five clearly different personalities and work styles.
 ### W-04 Editor
 
 - role: summarization, decision framing, cleanup
-- company fit: `Claude-side company`
+- company fit: `Southgate Research`
 - personality: tidy, precise, reduction-oriented
 - strength: turns noisy material into decision-ready text
 - weakness: can compress too aggressively if unconstrained
@@ -136,6 +136,7 @@ If two workers feel interchangeable, one should probably be removed or merged.
 Each worker should be configured using these fields:
 
 - `worker_name`
+- `character_name`
 - `role`
 - `lease_class`
 - `mission`
@@ -197,7 +198,21 @@ Each worker should be configured using these fields:
 - `confidence_threshold = high`
 - `preferred_output_shape = state alert`
 
-## 8. Creation Method
+## 8. Character Names
+
+The first five workers should also have stable call-sign style names.
+
+- `W-01 Builder` -> `Forge`
+- `W-02 Verifier` -> `Ledger`
+- `W-03 Researcher` -> `Compass`
+- `W-04 Editor` -> `Quill`
+- `W-05 Watcher` -> `Lantern`
+
+Role names explain function.
+
+Character names make internal conversation, reports, and identity management easier.
+
+## 9. Creation Method
 
 Use a four-step creation method.
 
@@ -241,7 +256,7 @@ Only after a worker proves useful should you consider:
 - prompt refinement
 - LoRA or fine-tuning
 
-## 9. What Not to Do First
+## 10. What Not to Do First
 
 Do not start by:
 
@@ -252,7 +267,7 @@ Do not start by:
 
 The first version should be mostly prompt-and-process based.
 
-## 10. Recommended Local Model Strategy
+## 11. Recommended Local Model Strategy
 
 Use local models by job type.
 
@@ -264,7 +279,7 @@ Suggested pattern:
 
 This is more practical than forcing one model to do every role well.
 
-## 11. Evaluation Criteria
+## 12. Evaluation Criteria
 
 Judge each worker by:
 
@@ -276,7 +291,7 @@ Judge each worker by:
 
 A worker with good failures is often better than one with flashy output.
 
-## 12. Promotion Path
+## 13. Promotion Path
 
 Promotion should go:
 
@@ -286,7 +301,7 @@ Promotion should go:
 4. lease-compatible or shared if justified
 5. model-refined worker if the role proves durable
 
-## 13. First Real Goal
+## 14. First Real Goal
 
 The first real goal is not "make the smartest worker."
 
@@ -296,7 +311,7 @@ The first real goal is:
 
 That is what will eventually let the system operate with less sponsor babysitting.
 
-## 14. First Runtime Loop
+## 15. First Runtime Loop
 
 The first runtime loop should be:
 

@@ -17,6 +17,7 @@ The first roster is intentionally small so supervision remains cheap.
 ### NS-01: Build Operator
 
 - company: `Northbridge Systems`
+- character_name: `Forge`
 - role: `coder/operator`
 - lease_class: `leasable`
 - mission: perform bounded implementation or file-structure tasks under explicit instructions
@@ -28,6 +29,7 @@ The first roster is intentionally small so supervision remains cheap.
 ### NS-02: Verification Clerk
 
 - company: `Northbridge Systems`
+- character_name: `Ledger`
 - role: `tester/reviewer`
 - lease_class: `leasable`
 - mission: verify that a proposed change or output actually meets the stated requirement
@@ -40,31 +42,34 @@ The first roster is intentionally small so supervision remains cheap.
 
 ### CL-01: Research Analyst
 
-- company: `Claude-side company`
+- company: `Southgate Research`
+- character_name: `Compass`
 - role: `researcher`
 - lease_class: `non-leasable`
 - mission: gather options, compare approaches, and surface missing information
 - allowed tools: local notes, approved research requests, structured comparisons
 - blocked tools: financial execution, system modification, scope expansion by itself
 - output: options table, recommendation, confidence, open questions
-- escalate to: Claude-side company president
+- escalate to: Southgate Research president
 
 ### CL-02: Briefing Editor
 
-- company: `Claude-side company`
+- company: `Southgate Research`
+- character_name: `Quill`
 - role: `summarizer`
 - lease_class: `non-leasable`
 - mission: convert raw findings or long threads into concise decision-ready briefs
 - allowed tools: local document editing, summarization, formatting
 - blocked tools: policy rewriting without review, inventing unstated decisions
 - output: brief, action summary, unresolved issues
-- escalate to: Claude-side company president
+- escalate to: Southgate Research president
 
 ## 5. Shared Worker
 
 ### SH-01: Queue Watcher
 
 - company: shared support role
+- character_name: `Lantern`
 - role: `watcher/librarian`
 - lease_class: `shared`
 - mission: track pending tasks, approvals, and stale items so neither company loses the thread
@@ -112,7 +117,7 @@ These workers may not be leased:
 - `CL-01: Research Analyst`
 - `CL-02: Briefing Editor`
 
-They remain company-internal until the Claude-side company explicitly changes their class in a future roster revision.
+They remain company-internal until the Southgate Research explicitly changes their class in a future roster revision.
 
 ## 10. Shared Workers
 

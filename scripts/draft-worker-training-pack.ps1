@@ -1,4 +1,5 @@
 param(
+  [string]$WorkerKey,
   [switch]$Force
 )
 
@@ -25,14 +26,16 @@ function Write-Utf8NoBomFile {
   [System.IO.File]::WriteAllText($Path, $Content, $Encoding)
 }
 
-if (-not (Test-Path $LabStatePath)) {
-  throw "worker lab state not found at $LabStatePath"
-}
-
-$LabState = Get-Content $LabStatePath -Raw | ConvertFrom-Json
-$WorkerKey = [string]$LabState.last_worker_key
 if (-not $WorkerKey) {
-  throw "worker lab state is missing last_worker_key"
+  if (-not (Test-Path $LabStatePath)) {
+    throw "worker lab state not found at $LabStatePath"
+  }
+
+  $LabState = Get-Content $LabStatePath -Raw | ConvertFrom-Json
+  $WorkerKey = [string]$LabState.last_worker_key
+  if (-not $WorkerKey) {
+    throw "worker lab state is missing last_worker_key"
+  }
 }
 
 $LabDir = Join-Path $ProjectRoot ("workers\lab\{0}" -f $WorkerKey)
@@ -60,7 +63,7 @@ $CandidatePath = Join-Path $WorkerTrainingRoot ("{0}-prompt-revision-candidate.m
 
 if (((Test-Path $BriefPath) -or (Test-Path $CandidatePath)) -and -not $Force) {
   Write-Output "skip existing training pack: $WorkerKey"
-  exit 0
+  return
 }
 
 $PromptText = Get-Content $PromptPath -Raw

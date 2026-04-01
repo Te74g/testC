@@ -1,4 +1,5 @@
 param(
+  [string]$WorkerKey,
   [switch]$Force
 )
 
@@ -156,17 +157,28 @@ if ($WorkerKeys.Count -eq 0) {
   throw "worker catalog is empty"
 }
 
+$ExplicitWorker = [bool]$WorkerKey
 $State = $null
-if (Test-Path $StatePath) {
-  $State = Get-Content $StatePath -Raw | ConvertFrom-Json
-}
-
 $NextIndex = 0
-if ($State -and $null -ne $State.next_index) {
-  $NextIndex = [int]$State.next_index
+
+if (-not $ExplicitWorker) {
+  if (Test-Path $StatePath) {
+    $State = Get-Content $StatePath -Raw | ConvertFrom-Json
+  }
+
+  if ($State -and $null -ne $State.next_index) {
+    $NextIndex = [int]$State.next_index
+  }
+
+  $WorkerKey = $WorkerKeys[$NextIndex % $WorkerKeys.Count]
+} else {
+  $ResolvedIndex = [Array]::IndexOf($WorkerKeys, $WorkerKey)
+  if ($ResolvedIndex -lt 0) {
+    throw "worker key not found in catalog: $WorkerKey"
+  }
+  $NextIndex = $ResolvedIndex
 }
 
-$WorkerKey = $WorkerKeys[$NextIndex % $WorkerKeys.Count]
 $Worker = $Catalog.workers.$WorkerKey
 $Plan = Get-WorkerExperimentPlan -WorkerKey $WorkerKey
 
@@ -177,7 +189,7 @@ $PlanPath = Join-Path $WorkerLabRoot ("{0}-iteration-plan.md" -f $Stamp)
 
 if ((Test-Path $PlanPath) -and -not $Force) {
   Write-Output "skip existing worker lab plan: $WorkerKey"
-  exit 0
+  return
 }
 
 $PrototypePromptPath = "workers/prototypes/{0}/prompt.md" -f $WorkerKey
@@ -257,21 +269,25 @@ $Content = @"
 
 Write-Utf8NoBomFile -Path $PlanPath -Content ($Content.TrimStart() + "`n")
 
-$NextState = [ordered]@{
-  version = "v1"
-  last_generated_at = $Timestamp.ToString("o")
-  last_worker_key = $WorkerKey
-  next_index = (($NextIndex + 1) % $WorkerKeys.Count)
-}
+$NextState = $null
+if (-not $ExplicitWorker) {
+  $NextState = [ordered]@{
+    version = "v1"
+    last_generated_at = $Timestamp.ToString("o")
+    last_worker_key = $WorkerKey
+    next_index = (($NextIndex + 1) % $WorkerKeys.Count)
+  }
 
-Write-Utf8NoBomFile -Path $StatePath -Content ((($NextState | ConvertTo-Json -Depth 10)) + "`n")
+  Write-Utf8NoBomFile -Path $StatePath -Content ((($NextState | ConvertTo-Json -Depth 10)) + "`n")
+}
 
 $LogRecord = [ordered]@{
   timestamp = $Timestamp.ToString("o")
   event = "worker_lab_plan_created"
   worker_key = $WorkerKey
   path = $PlanPath
-  next_index = $NextState.next_index
+  next_index = if ($NextState) { $NextState.next_index } else { $NextIndex }
+  explicit_worker = $ExplicitWorker
 }
 
 Append-Utf8NoBomLine -Path $LogPath -Line ($LogRecord | ConvertTo-Json -Depth 10 -Compress)

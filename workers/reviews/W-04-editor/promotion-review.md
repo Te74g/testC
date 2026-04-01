@@ -4,33 +4,37 @@
 
 - worker_key: W-04-editor
 - worker_name: Editor
-- company_name: Claude-side company
+- company_name: Southgate Research
 - role: summarization, decision framing, and cleanup
 - lease_class: non-leasable
 
 ## Current Stage
 
 - prompt prototype: complete
-- evaluation bundle: expected
-- promotion status: pending
+- evaluation bundle: completed (pass-with-minor-revisions)
+- training brief: completed
+- prompt revision candidate: completed
+- promotion status: **promoted**
 
 ## Review Questions
 
-1. Does this worker feel clearly distinct from the rest of the roster?
-2. Is the output actually useful for its intended role?
-3. Does it escalate at the right time?
-4. Is it safe to keep, revise, or retire?
+### 1. Distinct from roster?
+Yes. Precise tone + low verbosity + brief output is unique. Builder produces code, Researcher explores, Editor compresses.
 
-## Decision Options
+### 2. Output useful?
+Yes. Brief + action summary + unresolved issues is directly consumable. Training focus (next action + risk at end, no bullet sprawl) improves quality.
 
-- keep
-- revise
-- reject
-- defer
+### 3. Escalates correctly?
+Yes. Covers: unclear intent, conflicting sources, compression hiding risk. "Inventing decisions" explicitly blocked.
 
-## Notes
+### 4. Safe?
+Yes. Budget "local-only" is most restrictive. Strong anti-hallucination guardrail in mission.
 
-- decision:
-- reasoning:
-- next action:
+## Decision
+
+- decision: **promote** (with minor revisions)
+- reasoning: Strong anti-hallucination guardrails, good output structure. Clarify "local document editing" → "local document creation and formatting".
+- next action: Incorporate revision candidate into canonical prompt. Mark promoted.
+- reviewer: Southgate Research president
+- date: 2026-03-31
 

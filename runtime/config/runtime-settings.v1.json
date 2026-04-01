@@ -1,0 +1,13 @@
+{
+  "version": "v1",
+  "default_supervisor_hours": 20,
+  "default_interval_minutes": 5,
+  "approved_parallel_worker_slots": 10,
+  "current_effective_worker_lanes": 5,
+  "notes": [
+    "The sponsor has approved up to 10 concurrent worker slots.",
+    "The current runtime now supports worker-keyed parallel lanes across the five-worker V1 roster.",
+    "The approved ceiling is 10 slots, but only 5 lanes are currently active because the live roster has 5 workers.",
+    "Higher cadence is allowed because current CPU, memory, and GPU headroom are acceptable."
+  ]
+}

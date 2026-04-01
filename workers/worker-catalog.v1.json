@@ -4,6 +4,7 @@
     "W-01-builder": {
       "worker_id": "W-01-builder",
       "worker_name": "Builder",
+      "character_name": "Forge",
       "company_name": "Northbridge Systems",
       "roster_id": "NS-01",
       "role": "implementation and bounded action",
@@ -56,6 +57,7 @@
     "W-02-verifier": {
       "worker_id": "W-02-verifier",
       "worker_name": "Verifier",
+      "character_name": "Ledger",
       "company_name": "Northbridge Systems",
       "roster_id": "NS-02",
       "role": "testing, review, and contradiction finding",
@@ -106,7 +108,8 @@
     "W-03-researcher": {
       "worker_id": "W-03-researcher",
       "worker_name": "Researcher",
-      "company_name": "Claude-side company",
+      "character_name": "Compass",
+      "company_name": "Southgate Research",
       "roster_id": "CL-01",
       "role": "options analysis and source gathering",
       "lease_class": "non-leasable",
@@ -139,7 +142,7 @@
         "confidence statement",
         "open questions"
       ],
-      "escalate_to": "Claude-side company president",
+      "escalate_to": "Southgate Research president",
       "escalation_conditions": [
         "source quality is poor",
         "the question cannot be answered within scope",
@@ -155,7 +158,8 @@
     "W-04-editor": {
       "worker_id": "W-04-editor",
       "worker_name": "Editor",
-      "company_name": "Claude-side company",
+      "character_name": "Quill",
+      "company_name": "Southgate Research",
       "roster_id": "CL-02",
       "role": "summarization, decision framing, and cleanup",
       "lease_class": "non-leasable",
@@ -187,7 +191,7 @@
         "action summary",
         "unresolved issues"
       ],
-      "escalate_to": "Claude-side company president",
+      "escalate_to": "Southgate Research president",
       "escalation_conditions": [
         "intent is unclear",
         "source material conflicts",
@@ -203,6 +207,7 @@
     "W-05-watcher": {
       "worker_id": "W-05-watcher",
       "worker_name": "Watcher",
+      "character_name": "Lantern",
       "company_name": "shared support role",
       "roster_id": "SH-01",
       "role": "queue watching, reminder generation, and task continuity",

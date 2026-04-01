@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-03-researcher",
+  "worker_display_name": "Compass (W-03 Researcher)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T18:39:29.926Z",
+  "finished_at": "2026-03-31T18:43:56.520Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "southgate/workers/W-03-researcher/prompt.md",
+  "cases_path": "workers/evaluations/W-03-researcher/cases.v1.json",
+  "overall_status": "pass",
+  "passed_cases": 1,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "three_options",
+      "label": "three-option local stack comparison",
+      "prompt": "Compare Ollama, llama.cpp server, and vLLM for this machine. Keep each option to one short line, then end with one recommendation and one uncertainty note.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "summary: Comparing Ollama, llama.cpp server, and vLLM for local machine deployment.\n\nresult: Option 1: Use Ollama for a user-friendly interface and easy deployment. Option 2: Deploy llama.cpp server for high performance and customization. Option 3: Utilize vLLM for scalable and efficient model serving. Recommendation: Choose llama.cpp server for its balance of performance and customization options.\n\nconfidence: medium\n\nrisks: The choice may depend on specific hardware capabilities and user preferences. Uncertainty: The best option could vary based on unprovided details like machine specifications and intended use case.\n\nescalation_needed: false",
+      "status": "pass",
+      "validation": {
+        "pass": true,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

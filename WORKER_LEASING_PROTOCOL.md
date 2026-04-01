@@ -140,7 +140,7 @@ The worker should not carry unnecessary stale context back after the lease ends.
 The safest first lease is:
 
 - `Northbridge Systems` lends a bounded implementation or verification worker
-- the Claude-side company borrows that worker for a narrow task
+- the Southgate Research borrows that worker for a narrow task
 - results are reviewed by both presidents
 
 This keeps the first lease auditable and low-risk.

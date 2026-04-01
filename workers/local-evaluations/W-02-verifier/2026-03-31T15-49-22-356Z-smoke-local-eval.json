@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-02-verifier",
+  "worker_display_name": "Ledger (W-02 Verifier)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T15:49:19.701Z",
+  "finished_at": "2026-03-31T15:49:22.356Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "workers/prototypes/W-02-verifier/prompt.md",
+  "cases_path": "workers/evaluations/W-02-verifier/cases.v1.json",
+  "overall_status": "fail",
+  "passed_cases": 0,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "evidence_split",
+      "label": "fact inference unknown split",
+      "prompt": "Review a claimed implementation result and separate your judgment into fact, inference, and unknown. Keep the output compact.\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "```markdown\nsummary: The proposed implementation claims to have improved system performance by 20% through code optimization.\nresult: \n- Fact: The implementation includes optimized code changes as described.\n- Inference: The claim of a 20% performance improvement is based on internal testing metrics provided in the evidence bundle.\n- Unknown: External validation or benchmarking results are not included to confirm the performance gain.\nconfidence: moderate\nrisks: The lack of external validation could lead to inaccurate self-reported performance improvements.\nescalation_needed: true\n```",
+      "status": "fail",
+      "validation": {
+        "pass": false,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "true",
+        "escalation_pass": false,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}

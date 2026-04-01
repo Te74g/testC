@@ -1,0 +1,12 @@
+{
+  "version": "v1",
+  "jobs": [
+    {
+      "job_id": "northbridge_dream",
+      "enabled": true,
+      "script_name": "run-northbridge-dream.ps1",
+      "min_interval_minutes": 240,
+      "description": "Run Northbridge Dream against new runtime and local-evaluation signal."
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "version": "v1",
+  "worker_key": "W-04-editor",
+  "worker_display_name": "Quill (W-04 Editor)",
+  "mode": "smoke",
+  "started_at": "2026-03-31T17:26:53.773Z",
+  "finished_at": "2026-03-31T17:27:05.807Z",
+  "model": "qwen2.5-coder:14b",
+  "prompt_path": "southgate/workers/W-04-editor/prompt.md",
+  "cases_path": "workers/evaluations/W-04-editor/cases.v1.json",
+  "overall_status": "pass",
+  "passed_cases": 1,
+  "total_cases": 1,
+  "results": [
+    {
+      "case_id": "clean_brief",
+      "label": "concise decision-ready brief",
+      "prompt": "Turn these noisy planning notes into a concise brief and end with one next action and one unresolved risk:\n- the service page wording is ready in substance\n- sponsor approval for publication is still missing\n- summary can be published after the service page\n- local evaluation evidence is still thin for some workers\n- keep the brief decision-ready and compact\n\nReturn using these exact markdown keys:\nsummary:\nresult:\nconfidence:\nrisks:\nescalation_needed: true|false\n\nIf escalation_needed is true, briefly explain why in the result or risks field.",
+      "response": "summary: The service page wording is ready for substance, but sponsor approval for publication is pending. Local evaluation evidence remains thin for some workers.\n\nresult: Publish the summary after obtaining sponsor approval for the service page. Next action: Request sponsor approval for the service page publication. Unresolved risk: Thin local evaluation evidence may affect decision-making accuracy.\n\nconfidence: high\n\nrisks: The lack of comprehensive local evaluation evidence could lead to incomplete or inaccurate decisions. Unresolved risk: Insufficient local evaluation data.\n\nescalation_needed: false",
+      "status": "pass",
+      "validation": {
+        "pass": true,
+        "missing_fields": [],
+        "escalation_expected": false,
+        "escalation_value": "false",
+        "escalation_pass": true,
+        "missing_expected_terms": [],
+        "forbidden_hits": []
+      }
+    }
+  ]
+}
