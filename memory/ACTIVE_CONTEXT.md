@@ -33,6 +33,8 @@ Do not drift back into easy publication-doc expansion unless the sponsor explici
 - a new Northbridge-side book scaffold exists under `northbridge/output/zenn-book/`
 - the same Northbridge book now also exists under the real repo-root Zenn path `books/ai-president-runtime-os-guide/`
 - the first likely publication bug was that all Northbridge book chapters were marked `free: true` despite `price: 1500`; this is now being aligned to the Southgate pattern with only the opening chapters free
+- local `zenn list:books` now recognizes both `ai-president-mcp-guide` and `ai-president-runtime-os-guide`, so the remaining blocker is not repo shape but Zenn-side deployment/rate limiting
+- `books/ai-president-mcp-guide/cover.png` and `books/ai-president-runtime-os-guide/cover.png` now exist, so the previous Southgate cover warning should disappear on the next successful deploy
 
 ## 3. Product State
 
@@ -139,6 +141,7 @@ This compaction cycle exists because of that warning.
 - `11-publication-decision-sheet.md` now says `publish now`
 - `12-publication-packet.md` now records the first release as go
 - next step is commit + push from the clean clone so the publish-state book is captured in Git
+- screenshot evidence from Zenn now shows the Northbridge book is being blocked by posting-rate limits, not by missing book structure
 - keep Runtime Audit Studio moving, but do not let it delay the first real Northbridge publication
 - get one real auto-recovery proof for Ollama instead of only healthy-path verification
 - decide whether the technical brief generator should be repaired further or kept internal-only for now

@@ -112,6 +112,8 @@ Sponsor approval is mandatory for:
 - the Northbridge-side book now also has a real Zenn `config.yaml`, so it is no longer only a design memo set; it now has an actual publication manifest with fixed chapter order
 - the Northbridge-side book is now also mirrored into the repo-root Zenn path `books/ai-president-runtime-os-guide/`, which matches the shape of the already-published Southgate book
 - the strongest current hypothesis for the missing Zenn URL was a paid-book mismatch: Northbridge had `price: 1500` while every chapter was `free: true`; this is being corrected toward the Southgate pattern
+- after correction, local `zenn list:books` recognized the Northbridge book; the current external blocker is Zenn-side rate limiting rather than repo structure
+- both Southgate and Northbridge root book paths now have `cover.png`, reducing deploy warnings once Zenn-side rate limiting clears
 - the Northbridge-side book has started publish-quality wording cleanup, with chapters 1, 2, and 9 tightened to make the Southgate/Northbridge split and the Claude-vs-Codex comparison clearer
 - the Northbridge-side book wording cleanup now also covers chapters 3, 4, 7, and 8, and `northbridge/README.md` now reflects that the book is structurally publishable but still under final release cleanup
 - the Northbridge-side book now also has a publication checklist, a publication decision sheet, and a bundled publication packet, so the remaining gap is no longer structure but a final wording pass and the final `published: true` switch
