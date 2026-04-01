@@ -1,6 +1,6 @@
 ---
 title: "Runtime Audit Studio"
-free: true
+free: false
 ---
 
 # Runtime Audit Studio

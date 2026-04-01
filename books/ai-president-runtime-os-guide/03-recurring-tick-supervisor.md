@@ -1,6 +1,6 @@
 ---
 title: "Recurring Tick Supervisor"
-free: true
+free: false
 ---
 
 # Recurring Tick Supervisor

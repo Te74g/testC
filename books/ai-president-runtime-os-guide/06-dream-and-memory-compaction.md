@@ -1,6 +1,6 @@
 ---
 title: "Dream と memory 圧縮"
-free: true
+free: false
 ---
 
 # Dream と memory 圧縮

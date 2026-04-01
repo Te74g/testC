@@ -32,6 +32,7 @@ Do not drift back into easy publication-doc expansion unless the sponsor explici
 - a deterministic runtime audit pack now exists and is more trustworthy than the current local-model-generated brief path
 - a new Northbridge-side book scaffold exists under `northbridge/output/zenn-book/`
 - the same Northbridge book now also exists under the real repo-root Zenn path `books/ai-president-runtime-os-guide/`
+- the first likely publication bug was that all Northbridge book chapters were marked `free: true` despite `price: 1500`; this is now being aligned to the Southgate pattern with only the opening chapters free
 
 ## 3. Product State
 

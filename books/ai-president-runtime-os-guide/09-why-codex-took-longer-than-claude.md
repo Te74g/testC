@@ -1,6 +1,6 @@
 ---
 title: "なぜ Codex は Claude より時間がかかったのか"
-free: true
+free: false
 ---
 
 # なぜ Codex は Claude より時間がかかったのか

@@ -1,6 +1,6 @@
 ---
 title: "local LLM runtime を死なせない"
-free: true
+free: false
 ---
 
 # local LLM runtime を死なせない

@@ -1,6 +1,6 @@
 ---
 title: "worker を評価し、矯正する"
-free: true
+free: false
 ---
 
 # worker を評価し、矯正する
