@@ -62,6 +62,9 @@ Sponsor approval is mandatory for:
 - publishing strategy should stay split by company viewpoint:
   - `Southgate Research` covers organization, MCP bus, and worker-company concept
   - `Northbridge Systems` covers runtime OS, evaluation, recovery, and productization
+- book pricing should not be mirrored mechanically across companies:
+  - `Southgate` can justify a stronger first-book price because concept/launch books are easier to impulse-buy
+  - `Northbridge` operations books should bias toward easier entry unless strong proof or demand already exists
 
 ## 6. Durable Company Structure
 
@@ -129,6 +132,7 @@ Sponsor approval is mandatory for:
 - the Northbridge-side book wording cleanup now also covers chapters 3, 4, 7, and 8, and `northbridge/README.md` now reflects that the book is structurally publishable but still under final release cleanup
 - the Northbridge-side book now also has a publication checklist, a publication decision sheet, and a bundled publication packet, so the remaining gap is no longer structure but a final wording pass and the final `published: true` switch
 - the Northbridge-side book has now crossed that final switch: its Zenn config is `published: true`, the publication decision is `publish now`, and the first release state is now explicit in the packet and README
+- the Northbridge-side book now also explicitly records Codex-side pricing strategy inside the text itself, and the canonical publish manifest now matches that view: `1000 JPY` is the current first-release price, `1500 JPY` remains a possible later-stage price, and `500 JPY` remains the distribution-first fallback
 
 ## 9. Durable Failure Lessons
 

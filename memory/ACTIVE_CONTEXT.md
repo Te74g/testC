@@ -36,6 +36,7 @@ Do not drift back into easy publication-doc expansion unless the sponsor explici
 - local `zenn list:books` now recognizes both `ai-president-mcp-guide` and `ai-president-runtime-os-guide`, so the remaining blocker is not repo shape but Zenn-side deployment/rate limiting
 - `books/ai-president-mcp-guide/cover.png` and `books/ai-president-runtime-os-guide/cover.png` now exist, so the previous Southgate cover warning should disappear on the next successful deploy
 - Northbridge book wording is now being tightened toward a more assertive runtime/operations voice, especially in chapters 1, 7, and 9 plus the public-facing `config.yaml` summary
+- Northbridge book chapter 9 now also records Codex-side pricing strategy, and the canonical Zenn manifest now reflects it: `1000 JPY` is the current first-release price, while `1500 JPY` remains a stronger later-stage option and `500 JPY` remains the distribution-first option
 - delegated review was finally used in practice for the book: Quill/voice, Ledger/rigor, Compass/comparison fairness, Lantern/publication packaging
 - the highest-value publication cleanup from delegation was to make `books/ai-president-runtime-os-guide/config.yaml` the unambiguous canonical manifest and demote `northbridge/output/zenn-book/` to archival/support status
 
@@ -156,6 +157,7 @@ This compaction cycle exists because of that warning.
 ## 7. Immediate Next Steps
 
 - the Northbridge book has now crossed from publish-ready to release-state
+- book-pricing strategy is now explicitly part of the book itself rather than only an out-of-band note: Southgate can justify a stronger first price more easily than Northbridge because a launch/concept book sells differently from an operations book, and Northbridge now actually launches at `1000 JPY`
 - `northbridge/output/zenn-book/config.yaml` is now `published: true`
 - `11-publication-decision-sheet.md` now says `publish now`
 - `12-publication-packet.md` now records the first release as go
