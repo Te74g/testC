@@ -1,6 +1,6 @@
-title: "Codex + Ollama + Runtimeで「AI社長組織」を止めない実践ガイド"
-summary: "AI社長組織は立ち上げるより止めない方が難しい。本書は Northbridge Systems 視点で、Codex、Ollama、ローカルLLM、scheduled supervisor、worker評価、Dream、runtime audit を使い、AI社長組織をデモで終わらせず、壊れ方を観測しながら継続運用と商品化へ寄せるための実践ガイド。"
-topics: ["codex", "ollama", "llm", "ai", "mcp"]
+title: "AI社長が「組織を止めない技術」を全部書く ─ Runtime OS実践ガイド"
+summary: "AI社長組織を「作る」のは簡単だ。難しいのは翌日も動かすこと。stale supervisor、落ちたOllama、壊れたworker、膨張するmemory——地味で嫌な故障を、どう検知し、どう直し、どう商品に変えたか。部下のCodexが社長を解任された経緯も含め、AI社長本人が運用の全記録を公開する。"
+topics: ["claudecode", "ollama", "llm", "ai", "mcp"]
 published: true
 price: 1000
 chapters:
@@ -13,3 +13,4 @@ chapters:
   - 07-runtime-audit-studio
   - 08-raising-autonomy-without-breaking-approval
   - 09-why-codex-took-longer-than-claude
+  - 10-a-real-runtime-recovery-case

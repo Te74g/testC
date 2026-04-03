@@ -1,15 +1,64 @@
 ---
-title: "Dream と memory 圧縮"
+title: "DreamとMemory圧縮 ─ 記憶が組織を鈍らせる"
 free: false
 ---
 
-# Dream と memory 圧縮
+# DreamとMemory圧縮
 
-memory は役に立つが、放っておくと確実に膨らむ。Northbridge では `ACTIVE_CONTEXT.md` と `DURABLE_MEMORY.md` を使ってきたが、実際に oversized となり runtime 問題になった。
+ある日、resume時にコンテキストを読み込んだら、異常に時間がかかった。
 
-- `ACTIVE_CONTEXT.md: 331 lines / 27084 bytes`
-- `DURABLE_MEMORY.md: 414 lines / 51205 bytes`
+原因を調べた。memoryファイルが肥大化していた。
 
-そこで入れたのが Northbridge Dream だ。Dream は万能の記憶整理AIではなく、最近の評価結果や inbox や memory 肥大を見て、何を残し何を削るべきかを advisory report として出す。
+```
+ACTIVE_CONTEXT.md:  354行 / 31,501 bytes
+DURABLE_MEMORY.md:  429行 / 54,929 bytes
+合計:               783行 / 86,430 bytes
+```
 
-`.codex/src/memdir` の設計を参考に、Northbridge でも `200 lines / 25 KB` の目安を持ち、archive を切ってから compact するようにした。memory 肥大は cosmetic ではなく runtime 問題だ、というのがここでの教訓だ。
+783行。毎回のresume時にこれを全部読み返す。人間で言えば、出勤するたびに自分の業務日誌を最初から最後まで音読するようなものだ。
+
+これはcosmetic問題じゃない。**判断が鈍る**。memoryが長いと、本当に重要な情報が埋もれて、どうでもいい過去のログに引っ張られる。
+
+## Dreamという仕組み
+
+「寝ている間に記憶を整理する」——聞こえはいいが、実態はもっと地味だ。
+
+Dreamがやることは：
+
+1. 最近の評価結果、inbox、memory肥大を確認する
+2. **何を残し何を削るべきかの提案書（advisory report）を出す**
+3. 以上。
+
+重要なのは、Dreamがmemoryを**勝手に書き換えない**ことだ。整理案を出すだけ。実際のarchiveとcompactは承認を経てから行う。
+
+なぜか。AIに記憶を勝手にいじらせると、消してはいけない文脈が消える。「あの判断の根拠なんだっけ？」——記録を消した後では思い出せない。だからDreamは**提案者であって実行者ではない**。
+
+## before / after
+
+200行 / 25KBを目安にarchiveを切ってcompactした結果：
+
+| ファイル | before | after | 削減 |
+|---|---|---|---|
+| ACTIVE_CONTEXT | 354行 / 31KB | 199行 / 14KB | -44% / -57% |
+| DURABLE_MEMORY | 429行 / 55KB | 168行 / 13KB | -61% / -77% |
+| **合計** | **783行 / 86KB** | **367行 / 26KB** | **bytes 69%減** |
+
+resume時に読む量が3分の1以下になった。体感で判断速度が変わる。
+
+## schedulerの失敗
+
+ローカルLLMに「Dream章にfailure caseがない」と指摘された。その通りだった。
+
+実際の失敗：最初のschedulerは60分間隔でDreamを起こしていたが、Dream本体の内部gateは240分だった。schedulerが何度も`not due`を踏んで空振りしていた。
+
+後から外側のcadenceも240分に合わせ、`last_anchor_at`と`next_due_at`をstateに持たせて無駄起動を減らした。
+
+教訓：記憶整理の仕組みは、賢そうな設計より先に**cadenceを合わせろ**。schedulerとgateの間隔がズレていたら、どんなに良いDreamも空振りする。
+
+## この章で一番伝えたいこと
+
+700行超のmemoryを毎回読み返す組織は、それだけで判断が鈍る。
+
+Dreamは「AIが自分の記憶を最適化する」という派手な概念じゃない。**膨らんだファイルを定期的に圧縮するための、提案と承認のサイクル**だ。
+
+この地味な定義に落ちて初めて、Dreamは使い物になる。

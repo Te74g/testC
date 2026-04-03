@@ -24,7 +24,7 @@ The first roster is intentionally small so supervision remains cheap.
 - allowed tools: local file edits, local shell tasks, test invocation, formatting
 - blocked tools: spending, account actions, destructive actions without approval, public publication
 - output: changed files, short action summary, rollback note, escalation note if needed
-- escalate to: `Northbridge Systems` president
+- escalate to: `Southgate Research` president
 
 ### NS-02: Verification Clerk
 
@@ -36,7 +36,7 @@ The first roster is intentionally small so supervision remains cheap.
 - allowed tools: local tests, local inspection, structured review
 - blocked tools: deployment, approval override, silent acceptance of unclear work
 - output: pass/fail, risks, missing checks, follow-up recommendation
-- escalate to: `Northbridge Systems` president
+- escalate to: `Southgate Research` president
 
 ## 4. Claude-side Company Workers
 

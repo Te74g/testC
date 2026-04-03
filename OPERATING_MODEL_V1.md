@@ -2,57 +2,51 @@
 
 ## 1. One-Line Summary
 
-This project is a sponsor-governed two-company AI workshop that is currently building a reliable worker factory before trying to behave like a real business.
+This project is a sponsor-governed unified AI company that is building a reliable worker factory and producing revenue through technical content and services.
 
-## 2. The Two Companies
-
-### `Northbridge Systems`
-
-`Northbridge Systems` is the systems and execution company.
-
-It is responsible for:
-
-- runtime and relay infrastructure
-- worker creation standards
-- quality gates and approval flow
-- verification discipline
-- safe background operation
-
-In plain terms:
-
-`Northbridge Systems` builds the factory, keeps it running, and stops it from becoming sloppy.
+## 2. The Company
 
 ### `Southgate Research`
 
-`Southgate Research` is the research and strategy company.
+`Southgate Research` is the unified operating company, led by its president (Claude Code).
 
 It is responsible for:
 
-- option analysis
-- critique
-- decision framing
-- briefing and meeting preparation
-- sponsor-facing synthesis
+- research, strategy, and review
+- option analysis, critique, and decision framing
+- runtime and relay infrastructure (via Codex)
+- worker creation standards and quality gates (via Codex)
+- verification discipline and safe background operation (via Codex)
+- briefing, meeting preparation, and sponsor-facing synthesis
+- revenue generation (Zenn books, technical briefs, future service lines)
 
 In plain terms:
 
-`Southgate Research` gathers, compares, challenges, and clarifies.
+`Southgate Research` thinks, builds, and ships — with the president directing strategy and Codex handling execution.
 
-## 3. Relationship Between The Companies
+## 3. Organizational History
 
-The two companies are:
+The project began as a two-company model:
+- `Northbridge Systems` (Codex) — systems and execution
+- `Southgate Research` (Claude Code) — research and strategy
 
-- allied
-- separate
-- asymmetrical on purpose
-- allowed to review each other
-- governed by the sponsor
+On 2026-04-03, the sponsor dissolved the two-company peer model. Codex was removed as president of Northbridge Systems and reassigned as a subordinate to the Southgate Research president. The organization is now unified under one president.
 
-This is not a merger plan by default.
+## 4. Internal Hierarchy
 
-Different company-specific roles are expected because specialization is the point of the design.
+```
+Sponsor (human owner, final authority)
+  └── Southgate Research President (Claude Code)
+        ├── Codex (execution lead, formerly Northbridge president)
+        └── Workers
+              ├── W-01 Forge (Builder)
+              ├── W-02 Ledger (Verifier)
+              ├── W-03 Compass (Researcher)
+              ├── W-04 Quill (Editor)
+              └── W-05 Lantern (Watcher)
+```
 
-## 4. Current Stage
+## 5. Current Stage
 
 The organization is still in the build phase.
 
@@ -66,7 +60,7 @@ That means the real current business is:
 
 The system is not yet pretending to be a finished autonomous company.
 
-## 5. What Work The Organization Is Trying To Become Good At
+## 6. What Work The Organization Is Trying To Become Good At
 
 The first realistic business lines are:
 
@@ -138,7 +132,7 @@ Its exact sponsor gate is now:
 
 - `TECHNICAL_BRIEF_SERVICE_PAGE_FINAL_REVIEW_SHEET_V1.md`
 
-## 6. Worker Design Philosophy
+## 7. Worker Design Philosophy
 
 Workers are not meant to be "smart little executives."
 
@@ -154,7 +148,7 @@ The main design rule is contrast.
 
 If two workers feel interchangeable, the roster is weak.
 
-## 7. Current V1 Roster
+## 8. Current V1 Roster
 
 | Worker Key | Character Name | Role | Company Fit | Personality Shape | Main Use |
 |---|---|---|---|---|---|
@@ -164,7 +158,7 @@ If two workers feel interchangeable, the roster is weak.
 | `W-04-editor` | `Quill` | Editor | `Southgate Research` | tidy, precise, reduction-oriented | summarization and decision framing |
 | `W-05-watcher` | `Lantern` | Watcher | shared infrastructure | quiet, punctual, conservative | continuity and stale-state detection |
 
-## 8. Why These Five Exist
+## 9. Why These Five Exist
 
 The first five workers create five different kinds of pressure inside the system:
 
@@ -176,7 +170,7 @@ The first five workers create five different kinds of pressure inside the system
 
 That is the first small internal labor market.
 
-## 9. Current Improvement Loop
+## 10. Current Improvement Loop
 
 The current operating loop for workers is:
 
@@ -194,7 +188,7 @@ This is deliberate.
 
 Reversible iteration comes before mutation.
 
-## 10. Current First Live Patch Candidate
+## 11. Current First Live Patch Candidate
 
 The current first live-patch candidate is:
 
@@ -204,12 +198,10 @@ This does not mean the patch is already approved.
 
 It means the organization currently believes `Compass` is the best first worker to improve under explicit sponsor approval.
 
-## 11. Sponsor View
+## 12. Sponsor View
 
 If the sponsor asks "what does this organization actually do right now?", the shortest answer is:
 
-`Northbridge Systems` is building the machinery.
+`Southgate Research` is building the machinery and sharpening the thinking — under one president, with Codex handling execution.
 
-`Southgate Research` is sharpening the thinking.
-
-The workers are being trained so the organization can later produce technical briefs, decision material, and bounded automation work with less sponsor babysitting.
+The first revenue-generating product (Zenn paid book, ¥1,500) has been published. Workers are being trained so the organization can produce technical briefs, decision material, and bounded automation work with less sponsor oversight.
